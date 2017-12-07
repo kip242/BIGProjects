@@ -1,0 +1,28 @@
+@charset "ISO-8859-1";
+body {
+  background: #5fef7a;
+  box-sizing: border-box;
+}
+
+.project-container {
+	background: #ffffff;
+	border: solid;
+	border-radius: 5px;
+	padding: 5px;"
+}
+
+.progress-bar {
+	color:#000;
+	background-color:#f1f1f1;
+	border-radius: 5px;
+}
+
+.container {
+	padding:0.01em 16px;
+	
+}
+
+.purple{
+	color:#fff;
+	background-color:#9c27b0
+}

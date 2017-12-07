@@ -1,0 +1,30 @@
+<?php 
+    $pName = filter_input(INPUT_POST, 'pName');
+    $pDesc = filter_input(INPUT_POST, 'pDesc');
+	$pDesc = nl2br($pDesc, false);
+	$dDate = filter_input(INPUT_POST, 'dDate');
+	
+	echo $pName;
+	echo $pDesc;
+	echo $dDate;
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Front End Display</title>
+</head>
+<body>
+ 		<label>Project Owner</label>
+		<span><?php echo $pName; ?></span><br>
+		<label>Project Description</label>
+	 	<p><?php echo $pDesc; ?> </p><br>
+	 	<label>Project Due Date</label>
+	 	<p><?php echo $pDate; ?> </p><br>
+
+
+
+</body>
+</html>
+
