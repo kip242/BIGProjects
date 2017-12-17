@@ -1,8 +1,22 @@
 <?php
-$pName = filter_input(INPUT_POST, 'pName');
-$pDesc = filter_input(INPUT_POST, 'pDesc');
-$pDesc = nl2br($pDesc, false);
-$dDate = filter_input(INPUT_POST, 'dDate');
+
+include('connect.php');
+try {
+    //SQL SELECT statement
+    $result = $conn->prepare("SELECT userid, pName, pDesc, dDate FROM test");
+    $result->execute();
+    // assign returned array elements to variables
+    for($i=0; $row=$result->fetch(); $i++){
+       $pName = $row['pName'];
+       $pDesc = $row['pDesc'];
+       $dDate = $row['dDate'];
+    }
+}
+catch(PDOException $e)
+{
+    echo "Connection failed: " . $e->getMessage();
+}
+$conn = null;
 ?>
 
 <!DOCTYPE html>
@@ -13,13 +27,7 @@ $dDate = filter_input(INPUT_POST, 'dDate');
 <link rel="stylesheet" type="text/css" href="form.css">
 </head>
 <body>
-<button onclick="addContainer()">Try It</button>
-<script type="text/javascript">
-function addContainer(){
-	var cont = document.createElement("BUTTON");
-	document.body.appendChild(cont);
-}
-</script>
+
 
 <h1>Project Dashboard</h1>
 <div class="project-container">
