@@ -19,10 +19,12 @@ $pDesc = nl2br($pDesc, false);
 $dDate = filter_input(INPUT_GET, 'dDate');
 
 
+
+
 try {
 
     //insert data into database
-    $sql = "INSERT INTO test (pName, pDesc, dDate)
+    $sql = "INSERT INTO projecttable (pName, pDesc, dDate)
     VALUES ('$pName', '$pDesc', '$dDate')";
     //use exec() because no results are returned
     $conn->exec($sql);
@@ -35,7 +37,7 @@ catch(PDOException $e)
 
 try {
     //SQL SELECT statement
-    $result = $conn->prepare("SELECT userid, pName, pDesc, dDate FROM test");
+    $result = $conn->prepare("SELECT userid, pName, pDesc, dDate FROM projecttable");
     $result->execute();
     // assign returned array elements to variables
     $rows= $result->fetchAll(PDO::FETCH_ASSOC);
@@ -45,6 +47,8 @@ catch(PDOException $e)
     echo "Table Retrieval Failed: " . $e->getMessage();
 }
     $conn = null;
+
+
 ?>
 
 <!DOCTYPE html>
@@ -54,14 +58,19 @@ catch(PDOException $e)
     <title>Back End Insert</title>
     <link rel="stylesheet" type="text/css" href="form.css">
 </head>
+<body>
 <br>
 <h1>Project Dashboard</h1>
+<form action="index.php" method="get">
+    <input type="submit" value="Add another Project">
+</form>
 <?php
 foreach($rows as $row){
 $pName = $row['pName'];
 $pDesc = $row['pDesc'];
 $dDate = $row['dDate'];
 ?>
+
     <div class="project-container">
     <label>Project Owner:</label>
     <span><?php echo $pName; ?></span><br>
@@ -70,8 +79,14 @@ $dDate = $row['dDate'];
     <label>Project Due Date:</label>
     <span><?php echo $dDate; ?> </span><br>
         <br>
-        <label>Close Project</label>
-        <input type = "checkbox" name="active" value="Finish Project">
+
+        <form action="delete.php" method="POST">
+        <input type="submit" name="delete" value="Delete Project">
+        </form>
+        <form action="index.php">
+        <input type="submit" name="update" value="Update Project">
+        </form>
+
         <br>
         <br>
     <div class="progress-bar">

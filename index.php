@@ -31,8 +31,12 @@ include('connect.php');
         <br>
         <br>
         <input type="submit" value="Submit Project">
+
         <br>
     </form>
+<form action="insert.php">
+    <input type="submit" name="submit" value="Go to Project List">
+</form>
 
 </body>
 </html>

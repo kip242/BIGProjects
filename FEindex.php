@@ -3,7 +3,7 @@
 include('connect.php');
 try {
     //SQL SELECT statement
-    $result = $conn->prepare("SELECT userid, pName, pDesc, dDate FROM test");
+    $result = $conn->prepare("SELECT userid, pName, pDesc, dDate FROM projecttable");
     $result->execute();
     // assign returned array elements to variables
     $rows= $result->fetchAll(PDO::FETCH_ASSOC);
@@ -22,6 +22,7 @@ $conn = null;
 <title>Front End Display</title>
 <link rel="stylesheet" type="text/css" href="form.css">
 </head>
+<body>
 <br>
 <h1>Project Dashboard</h1>
 <?php
