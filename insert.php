@@ -22,7 +22,7 @@ $dDate = filter_input(INPUT_GET, 'dDate');
 try {
 
     //insert data into database
-    $sql = "INSERT INTO projecttable (pName, pDesc, dDate)
+    $sql = "INSERT INTO test (pName, pDesc, dDate)
     VALUES ('$pName', '$pDesc', '$dDate')";
     //use exec() because no results are returned
     $conn->exec($sql);
@@ -35,7 +35,7 @@ catch(PDOException $e)
 
 try {
     //SQL SELECT statement
-    $result = $conn->prepare("SELECT userid, pName, pDesc, dDate FROM projecttable");
+    $result = $conn->prepare("SELECT userid, pName, pDesc, dDate FROM test");
     $result->execute();
     // assign returned array elements to variables
     $rows= $result->fetchAll(PDO::FETCH_ASSOC);
