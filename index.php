@@ -3,21 +3,21 @@ if (!isset($pName)) {$pName = "";}
 if (!isset($pDesc)) {$pDesc = "";}
 if (!isset($dDate)) {$dDate = "";}
 
-$task_list = filter_input(INPUT_POST, 'tasklist', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
+$task_list = filter_input(INPUT_GET, 'tasklist', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
 if ($task_list === NULL){
     $task_list = array();
 }
 
-$action = filter_input(INPUT_POST, 'action');
-array_push($task_list, "12/31/2017");
+$action = filter_input(INPUT_GET, 'action');
 
-switch ('action'){
+
+switch ($action){
     case 'add':
-        $new_task = filter_input(INPUT_POST, 'task');
+        $new_task = filter_input(INPUT_GET, 'task');
         $task_list[] = $new_task;
 }
-
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,9 +41,9 @@ switch ('action'){
         <br>
         <br>
         <label>Project Milestone Dates:</label>
-        <?php foreach ($task_list as $task) ?>
+        <?php foreach ($task_list as $task) : ?>
            <?php echo htmlspecialchars($task); ?>
-
+        <?php endforeach; ?>
         <!--<input type="submit" value="Add Milestone Date">-->
         <br>
         <br>
@@ -55,15 +55,16 @@ switch ('action'){
         <input type="submit" name="submit" value="Go to Project List">
     </form>
         <br>
-    <label>Add Milestone Date:</label>
-    <form action="." method="POST">
-        <?php foreach($task_list as $task) ?>
+<h2>Add Milestone Date:</h2>
+    <form action="." method="GET" >
+        <?php foreach( $task_list as $task ) :  ?>
         <input type="hidden" name="tasklist[]"
                value="<?php echo htmlspecialchars($task);?>">
+        <?php endforeach;?>
         <input type="hidden" name="action" value="add">
-        <label>Date:</label>
-        <input type="text" name="task"><br>
-        <label>&nbsp;</label>
+        <label>Add Date:</label>
+        <input type="date" name="task" ><br>
+
         <input type="submit" value="Add Date"><br>
     </form>
         <br>
