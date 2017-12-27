@@ -22,6 +22,54 @@ body {
 	
 }
 
+.buttonDelete {
+	background-color: #FF0000;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 12px;
+	border-radius: 8px;
+}
+
+.buttonUpdate {
+    background-color: #0000FF;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 8px;
+
+}
+
+.buttonAdd {
+    background-color: #9c27b0;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 8px;
+}
+
+.buttonMoreInfo{
+    background-color: #00FF00;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 8px;}
+
 .purple{
 	color:#fff;
 	background-color:#9c27b0

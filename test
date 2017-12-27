@@ -1,0 +1,5 @@
+//this goes after delete.php on BEdisplay
+?userid=<?php echo $row['userid']; ?>
+
+<div class="progress-bar">
+	 		<div id="myBar" class="container purple" style="height:24px;width:25%">
