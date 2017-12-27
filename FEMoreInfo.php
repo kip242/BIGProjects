@@ -15,7 +15,7 @@ $dDate = $_GET['dDate'];
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Front End Display</title>
+<title>More Information</title>
 <link rel="stylesheet" type="text/css" href="form.css">
 </head>
 <body>

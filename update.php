@@ -17,7 +17,7 @@ $dDate = $_GET['dDate'];
 <!DOCTYPE html>
 <html>
 <head>
-<title>Backend Form</title>
+<title>Update Form</title>
 </head>
 <body>
 <h1>New Project Entry Information</h1>
@@ -37,7 +37,7 @@ $dDate = $_GET['dDate'];
        value="<?php echo htmlspecialchars($dDate)?>">
 <br>
 <br>
-<input type="submit" value="Submit Project">
+<input type="submit" value="Submit Update">
 <br>
 <br>
 </form>
