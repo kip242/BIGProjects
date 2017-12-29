@@ -34,6 +34,7 @@ switch ($action){
         <textarea name="pDesc" maxlength="1000" rows="4" cols="50"><?php echo htmlspecialchars($pDesc)?></textarea>
             <br>
             <br>
+    
         <label>Project Due Date:</label>
         <input type="date" name="dDate"
 		    value="<?php echo htmlspecialchars($dDate)?>">
