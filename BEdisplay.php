@@ -19,9 +19,6 @@ catch(PDOException $e)
     echo "Table Retrieval Failed: " . $e->getMessage();
 }
 //$conn = null;
-
-
-
 ?>
 
 
