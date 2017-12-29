@@ -36,9 +36,13 @@ foreach($rows as $row){
 	<label>Project Description:</label>
 	<span><?php echo $pDesc; ?> </span><br>
 	<label>Project Due Date:</label>
-	<span><?php echo $dDate; ?> </span><br>
-	 	<div class="progress-bar">
-	 		<div id="myBar" class="container purple" style="height:24px;width:25%">
+	<span><?php echo $dDate; ?> </span><br><br>
+    <form action="FEMoreInfo.php" method="GET">
+        <input type="hidden" name="pName" value="<?php echo $pName; ?>">
+        <input type="hidden" name="pDesc" value="<?php echo $pDesc; ?>">
+        <input type="hidden" name="dDate" value="<?php echo $dDate; ?>">
+	 	<button class="buttonMoreInfo" name="moreInfo">More Information</button>
+    </form>
 	 	</div>
 	 </div>
 </div><br><br><?php } ?>
