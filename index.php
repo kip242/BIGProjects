@@ -10,7 +10,6 @@ if ($milestone_date === NULL){
 
 $action = filter_input(INPUT_GET, 'action');
 
-
 switch ($action){
     case 'add':
         $new_date = filter_input(INPUT_GET, 'task');
@@ -40,11 +39,22 @@ switch ($action){
 		    value="<?php echo htmlspecialchars($dDate)?>">
         <br>
         <br>
-        <label>Project Milestone Dates:</label>
-        <?php foreach ($milestone_date as $date) : ?>
-            <?php echo htmlspecialchars($date); ?>
-        <?php endforeach; ?>
-        <br>
+    <label>Project Milestone Dates:</label>
+    <?php foreach ($milestone_date as $date) : ?>
+        <?php echo htmlspecialchars($date); ?>
+    <?php endforeach; ?>
+    <br>
+</form>
+    <h2>Add Milestone Date:</h2>
+    <form action="." method="GET" >
+        <?php foreach( $milestone_date as $date ) :  ?>
+            <input type="hidden" name="tasklist[]"
+                   value="<?php echo htmlspecialchars($date);?>">
+        <?php endforeach;?>
+        <input type="hidden" name="action" value="add">
+        <label>Add Date:</label>
+        <input type="date" name="task" ><br><br>
+        <button class="buttonUpdate" type="submit">Add Date</button><br>
         <br>
         <input type="submit" value="Submit Project">
         <br>
@@ -53,20 +63,8 @@ switch ($action){
     <form action="BEdisplay.php" method="GET">
         <input type="submit" name="submit" value="Go to Project List">
     </form>
-        <br>
 
-<h2>Add Milestone Date:</h2>
-<form action="." method="GET" >
-    <?php foreach( $milestone_date as $date ) :  ?>
-        <input type="hidden" name="tasklist[]"
-               value="<?php echo htmlspecialchars($date);?>">
-    <?php endforeach;?>
-    <input type="hidden" name="action" value="add">
-    <label>Add Date:</label>
-    <input type="date" name="task" ><br>
-    <input type="submit" value="Add Date"><br>
-</form>
-<br>
+
 
 </body>
 </html>

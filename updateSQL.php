@@ -11,6 +11,13 @@ $userid = $_GET['userid'];
 $pName = $_GET['pName'];
 $pDesc = $_GET['pDesc'];
 $dDate = $_GET['dDate'];
+$mDate = $_GET['mDate'];
+
+echo $userid;
+echo $pName;
+echo $pDesc;
+echo $dDate;
+
 
 $sql = "UPDATE projecttable
         SET pName = '$pName',
