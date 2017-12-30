@@ -8,7 +8,20 @@ body {
 	background: #ffffff;
 	border: solid;
 	border-radius: 5px;
-	padding: 5px;"
+	padding: 5px;
+    width: 65%;
+    float: left;
+    margin-bottom: 10px;
+}
+
+.milestone-container{
+    background: #ffffff;
+    border: solid;
+    border-radius: 5px;
+    padding: 5px;
+    width: 30%;
+    float: right;
+
 }
 
 .progress-bar {
@@ -27,12 +40,13 @@ body {
 	border: none;
 	color: white;
 	padding: 15px 32px;
+    margin-right: 5px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
 	font-size: 12px;
 	border-radius: 8px;
-
+    float: left;
 
 }
 
@@ -43,7 +57,7 @@ body {
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    display: inline;
     font-size: 12px;
     border-radius: 8px;
 
@@ -56,7 +70,7 @@ body {
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    display: inline;
     font-size: 12px;
     border-radius: 8px;
 

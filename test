@@ -58,3 +58,53 @@ if(isset($_GET['submit'])){
     </form>
 </body>
 </html>
+
+session_start();
+include('connect.php');
+
+//get userid from BEdisplay.php
+$userid = $_GET['userid'];
+
+$result = $conn->prepare("SELECT userid, pName, pDesc, dDate, mDate FROM projecttable WHERE userid = '$userid'");
+$result->execute();
+
+// assign returned array elements to variables
+$rows= $result->fetchAll(PDO::FETCH_ASSOC);
+
+$milestone_date = filter_input(INPUT_GET, 'tasklist', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
+if ($milestone_date === NULL){
+    $milestone_date = array();
+}
+
+$action = filter_input(INPUT_GET, 'action');
+
+switch ($action){
+    case 'add':
+        $userid = $_SESSION['userid'];
+        $new_date = filter_input(INPUT_GET, 'task');
+        $milestone_date[] = $new_date;
+
+}
+?>
+
+<form action="." method="GET" >
+        <?php foreach( $milestone_date as $date ) :  ?>
+            <input type="hidden" name="tasklist[]"
+                   value="<?php echo htmlspecialchars($date);?>">
+        <?php endforeach;?>
+        <input type="hidden" name="action" value="add">
+        <input type="hidden" name="userid" value="<?php echo $userid; ?>">
+        <input type="hidden" name="pName" value="<?php echo $pName; ?>">
+        <input type="hidden" name="pDesc" value="<?php echo $pDesc; ?>">
+        <input type="hidden" name="dDate" value="<?php echo $dDate; ?>">
+        <label>Add Date:</label>
+        <input type="date" name="task" value="Add Date"><br><br>
+        <button class="buttonUpdate" type="submit">Add Date</button><br>
+
+        <br>
+        <br>
+    </form>
+
+    <?php foreach ($milestone_date as $date) : ?>
+            <?php echo htmlspecialchars($date); ?>
+        <?php endforeach; ?>
