@@ -10,28 +10,17 @@ if (!isset($pDesc)) {
 if (!isset($dDate)) {
     $dDate = "";
 }
-if (!isset($mDate)) {
-    $mDate = "";
-}
+if (!isset($date1)) {$date1 = "";}
+if (!isset($date2)) {$date2 = "";}
+if (!isset($date3)) {$date3 = "";}
+if (!isset($date4)) {$date4 = "";}
+if (!isset($date5)) {$date5 = "";}
+if (!isset($date6)) {$date6 = "";}
+if (!isset($date7)) {$date7 = "";}
+if (!isset($date8)) {$date8 = "";}
+if (!isset($date9)) {$date9 = "";}
+if (!isset($date10)) {$date10 = "";}
 
-$milestone_date = filter_input(INPUT_GET, 'tasklist', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
-if ($milestone_date === NULL) {
-    $milestone_date = array();
-}
-
-$action = filter_input(INPUT_GET, 'action');
-
-switch ($action) {
-    case 'add':
-        $pName = $_GET['pName'];
-        $pDesc = $_GET['pDesc'];
-        $dDate = $_GET['dDate'];
-
-        //echo $pName;
-
-        $new_date = filter_input(INPUT_GET, 'task');
-        $milestone_date[] = $new_date;
-}
 ?>
 
 <!DOCTYPE html>
@@ -58,16 +47,16 @@ switch ($action) {
     <br>
     <br>
     <label>Project Milestone Dates:</label>
-    <p id="demo"></p>
-    <script>
-        var dates = [];
-        document.getElementById("demo").innerHTML = dates;
-
-        function myFunction() {
-            dates.push(document.getElementById("mDate").value);
-            document.getElementById("demo").innerHTML = dates;
-        }
-    </script>
+    <input type="date" name="date1" value="<?php echo htmlspecialchars($date1)?>">
+    <input type="date" name="date2" value="<?php echo htmlspecialchars($date2)?>">
+    <input type="date" name="date3" value="<?php echo htmlspecialchars($date3)?>">
+    <input type="date" name="date4" value="<?php echo htmlspecialchars($date4)?>">
+    <input type="date" name="date5" value="<?php echo htmlspecialchars($date5)?>">
+    <input type="date" name="date6" value="<?php echo htmlspecialchars($date6)?>">
+    <input type="date" name="date7" value="<?php echo htmlspecialchars($date7)?>">
+    <input type="date" name="date8" value="<?php echo htmlspecialchars($date8)?>">
+    <input type="date" name="date9" value="<?php echo htmlspecialchars($date9)?>">
+    <input type="date" name="date10" value="<?php echo htmlspecialchars($date10)?>">
     <br>
     <br>
     <input type="submit" value="Submit Project">
@@ -76,9 +65,5 @@ switch ($action) {
 <form action="BEdisplay.php" method="GET">
     <input type="submit" name="submit" value="Go to Project List">
 </form>
-<h2>Add Milestone Date:</h2>
-<input type="date" id="mDate" name="mDate"
-       value="<?php echo htmlspecialchars($mDate) ?>">
-<button onclick="myFunction()">Add Date</button>
 </body>
 </html>
