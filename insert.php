@@ -13,7 +13,7 @@ $pName = filter_input(INPUT_GET, 'pName'); //TODO change to INPUT_POST
 $pDesc = filter_input(INPUT_GET, 'pDesc');
 $pDesc = nl2br($pDesc, false);
 $dDate = filter_input(INPUT_GET, 'dDate');
-$mDate = filter_input(INPUT_GET, 'dates');
+
 $date1 = filter_input(INPUT_GET, 'date1');
 $date2 = filter_input(INPUT_GET, 'date2');
 $date3 = filter_input(INPUT_GET, 'date3');
@@ -27,8 +27,8 @@ $date10 = filter_input(INPUT_GET, 'date10');
 try {
 
     //insert data into database
-    $sql = "INSERT INTO projecttable (pName, pDesc, dDate, mDate, date1, date2, date3, date4, date5, date6, date7, date8,date9,date10)
-    VALUES ('$pName', '$pDesc', '$dDate', '$mDate', '$date1', '$date2', '$date3', '$date4', '$date5', '$date6', '$date7', '$date8', '$date9', '$date10')";
+    $sql = "INSERT INTO projecttable (pName, pDesc, dDate, date1, date2, date3, date4, date5, date6, date7, date8, date9, date10)
+    VALUES ('$pName', '$pDesc', '$dDate', '$date1', '$date2', '$date3', '$date4', '$date5', '$date6', '$date7', '$date8', '$date9', '$date10')";
     //use exec() because no results are returned
     $conn->exec($sql);
     header("Location: BEdisplay.php");
