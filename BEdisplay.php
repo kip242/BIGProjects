@@ -53,6 +53,7 @@ foreach ($rows as $row) {
     $date9 = $row['date9'];
     $date10 = $row['date10'];
 
+    echo $date1;
     ?>
     <div class="project-container">
         <label class="boldLabel">Project ID:</label>
@@ -81,23 +82,23 @@ foreach ($rows as $row) {
         <form action="deleteMilestone.php" method="GET">
         <label class="boldLabel">Project Milestone Dates:</label><br><br>
         <div class="dateContainerLeft">
-        <input type="checkbox" name="date[]" value="blah"><?php echo $date1 ?><br>
-        <input type="checkbox" name="date[]" value="date2"><?php echo $date2 ?><br>
-        <input type="checkbox" name="date[]" value="date3"><?php echo $date3 ?><br>
-        <input type="checkbox" name="date[]" value="date4"><?php echo $date4 ?><br>
-        <input type="checkbox" name="date[]" value="date5"><?php echo $date5 ?><br>
+        <input type="checkbox" name="date[]" value="<?php echo $date1; ?>"><?php echo $date1; ?><br>
+        <input type="checkbox" name="date[]" value="<?php echo $date2; ?>"><?php echo $date2; ?><br>
+        <input type="checkbox" name="date[]" value="<?php echo $date3 ?>"><?php echo $date3 ?><br>
+        <input type="checkbox" name="date[]" value="<?php echo $date4 ?>"><?php echo $date4 ?><br>
+        <input type="checkbox" name="date[]" value="<?php echo $date5 ?>"><?php echo $date5 ?><br>
         </div>
         <div class="dateContainerRight">
-        <input type="checkbox" name="date[]" value="date6"><?php echo $date6 ?><br>
-        <input type="checkbox" name="date[]" value="date7"><?php echo $date7 ?><br>
-        <input type="checkbox" name="date[]" value="date8"><?php echo $date8 ?><br>
-        <input type="checkbox" name="date[]" value="date9"><?php echo $date9 ?><br>
-        <input type="checkbox" name="date[]" value="date10"><?php echo $date10 ?><br>
+        <input type="checkbox" name="date[]" value="<?php echo $date6 ?>"><?php echo $date6 ?><br>
+        <input type="checkbox" name="date[]" value="<?php echo $date7 ?>"><?php echo $date7 ?><br>
+        <input type="checkbox" name="date[]" value="<?php echo $date8 ?>"><?php echo $date8 ?><br>
+        <input type="checkbox" name="date[]" value="<?php echo $date9 ?>"><?php echo $date9 ?><br>
+        <input type="checkbox" name="date[]" value="<?php echo $date10 ?>"><?php echo $date10 ?><br>
         </div>
         <br><br><br><br>
 
             <input type="hidden" name="userid" value="<?php echo $userid; ?>">
-            <input type="hidden" name="date[]" value="<?php echo $date1; ?>">
+            <!--<input type="hidden" name="date[]" value="<?php echo $date1; ?>">
             <input type="hidden" name="date[]" value="<?php echo $date2; ?>">
             <input type="hidden" name="date[]" value="<?php echo $date3; ?>">
             <input type="hidden" name="date[]" value="<?php echo $date4; ?>">
@@ -106,7 +107,7 @@ foreach ($rows as $row) {
             <input type="hidden" name="date[]" value="<?php echo $date7; ?>">
             <input type="hidden" name="date[]" value="<?php echo $date8; ?>">
             <input type="hidden" name="date[]" value="<?php echo $date9; ?>">
-            <input type="hidden" name="date[]" value="<?php echo $date10; ?>">
+            <input type="hidden" name="date[]" value="<?php echo $date10; ?>">-->
             <button class="buttonMilestone" type="submit" name="milestone" value="delete">Delete Milestone Date</button>
         </form>
     </div>
@@ -114,4 +115,3 @@ foreach ($rows as $row) {
 </body>
 </html>
 
-<?php print_r ($date);?>
