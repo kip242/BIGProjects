@@ -1,4 +1,7 @@
 <?php
+if (!isset($userid)){
+    $pId = "";
+}
 if (!isset($pName)) {
     $pName = "";
 }
@@ -29,6 +32,11 @@ if (!isset($date10)) {$date10 = "";}
 <body>
 <h1>New Project Entry Information</h1>
 <form action="insert.php" method="GET"><!--TODO change to POST -->
+    <label>Project Number:</label>
+    <input type="text" name="pId"
+           value="<?php echo htmlspecialchars($pId); ?>">
+    <br>
+    <br>
     <label>Project Owner:</label>
     <input type="text" name="pName"
            value="<?php echo htmlspecialchars($pName); ?>">

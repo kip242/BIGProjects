@@ -10,11 +10,14 @@
 include('connect.php');
 try {
     //SQL SELECT statement
-    $result = $conn->prepare("SELECT userid, pName, pDesc, dDate, date1, date2, date3,
-                                       date4, date5, date6, date7, date8, date9, date10 FROM projecttable");
+    $result = $conn->prepare("SELECT pId, pName, pDesc, dDate FROM projecttable");
     $result->execute();
     // assign returned array elements to variables
     $rows = $result->fetchAll(PDO::FETCH_ASSOC);
+
+    $result2 = $conn->prepare("SELECT date1 FROM datetable");
+    $result2->execute();
+    $rows2 = $result->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     echo "Table Retrieval Failed: " . $e->getMessage();
 }
@@ -37,7 +40,7 @@ try {
 
 <?php
 foreach ($rows as $row) {
-    $userid = $row['userid'];
+    $pId = $row['pId'];
     $pName = $row['pName'];
     $pDesc = $row['pDesc'];
     $dDate = $row['dDate'];
@@ -53,11 +56,11 @@ foreach ($rows as $row) {
     $date9 = $row['date9'];
     $date10 = $row['date10'];
 
-    echo $date1;
+
     ?>
     <div class="project-container">
         <label class="boldLabel">Project ID:</label>
-        <span><?php echo $userid; ?></span><br>
+        <span><?php echo $pId; ?></span><br>
         <label class="boldLabel">Project Owner:</label>
         <span><?php echo $pName; ?></span><br>
         <label class="boldLabel">Project Description:</label>
@@ -66,11 +69,11 @@ foreach ($rows as $row) {
         <span><?php echo $dDate; ?> </span><br>
         <div>
             <form action="delete.php" method="GET">
-                <input type="hidden" name="userid" value="<?php echo $userid; ?>">
+                <input type="hidden" name="userid" value="<?php echo $pId; ?>">
                 <button class="buttonDelete" type="submit" name="delete">Delete Project</button>
             </form>
             <form action="update.php" method="GET">
-                <input type="hidden" name="userid" value="<?php echo $userid; ?>">
+                <input type="hidden" name="userid" value="<?php echo $pId; ?>">
                 <input type="hidden" name="pName" value="<?php echo $pName; ?>">
                 <input type="hidden" name="pDesc" value="<?php echo $pDesc; ?>">
                 <input type="hidden" name="dDate" value="<?php echo $dDate; ?>">
@@ -97,7 +100,7 @@ foreach ($rows as $row) {
         </div>
         <br><br><br><br>
 
-            <input type="hidden" name="userid" value="<?php echo $userid; ?>">
+            <input type="hidden" name="userid" value="<?php echo $pId; ?>">
             <!--<input type="hidden" name="date[]" value="<?php echo $date1; ?>">
             <input type="hidden" name="date[]" value="<?php echo $date2; ?>">
             <input type="hidden" name="date[]" value="<?php echo $date3; ?>">

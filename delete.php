@@ -7,10 +7,10 @@
  */
 
 include('connect.php');
-$userid = $_GET['userid'];
+$pId = $_GET['pId'];
 
 
-$sql = "DELETE FROM projecttable WHERE userid  = '$userid'";
+$sql = "DELETE FROM projecttable WHERE pId  = '$pId'";
 $conn->exec($sql);
 
 echo "Project Deleted";

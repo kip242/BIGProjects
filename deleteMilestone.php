@@ -6,7 +6,7 @@
  * Time: 8:28 AM
  */
 
-$userid = $_GET['userid'];
+$pId = $_GET['pId'];
 $mDate = $_GET['date'];
 
 $sql = "UPDATE projecttable
