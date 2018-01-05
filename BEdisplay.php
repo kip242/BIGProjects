@@ -10,19 +10,19 @@
 include('connect.php');
 try {
     //SQL SELECT statement
-    $result = $conn->prepare("SELECT pId, pName, pDesc, dDate FROM projecttable");
+    $result = $conn->prepare("SELECT projecttable.pId, projecttable.pName, projecttable.pDesc, projecttable.dDate, datetable.date1 
+                                        FROM projecttable
+                                        INNER JOIN datetable ON projecttable.pId = datetable.pId
+                                        GROUP BY pId");
     $result->execute();
     // assign returned array elements to variables
     $rows = $result->fetchAll(PDO::FETCH_ASSOC);
-
-    $result2 = $conn->prepare("SELECT date1 FROM datetable");
-    $result2->execute();
-    $rows2 = $result->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     echo "Table Retrieval Failed: " . $e->getMessage();
 }
-?>
 
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -44,73 +44,72 @@ foreach ($rows as $row) {
     $pName = $row['pName'];
     $pDesc = $row['pDesc'];
     $dDate = $row['dDate'];
-
     $date1 = $row['date1'];
-    $date2 = $row['date2'];
-    $date3 = $row['date3'];
-    $date4 = $row['date4'];
-    $date5 = $row['date5'];
-    $date6 = $row['date6'];
-    $date7 = $row['date7'];
-    $date8 = $row['date8'];
-    $date9 = $row['date9'];
-    $date10 = $row['date10'];
-
 
     ?>
-    <div class="project-container">
-        <label class="boldLabel">Project ID:</label>
-        <span><?php echo $pId; ?></span><br>
-        <label class="boldLabel">Project Owner:</label>
-        <span><?php echo $pName; ?></span><br>
-        <label class="boldLabel">Project Description:</label>
-        <span><?php echo $pDesc; ?> </span><br><br>
-        <label class="boldLabel">Project Due Date:</label>
-        <span><?php echo $dDate; ?> </span><br>
-        <div>
-            <form action="delete.php" method="GET">
-                <input type="hidden" name="userid" value="<?php echo $pId; ?>">
-                <button class="buttonDelete" type="submit" name="delete">Delete Project</button>
-            </form>
-            <form action="update.php" method="GET">
-                <input type="hidden" name="userid" value="<?php echo $pId; ?>">
-                <input type="hidden" name="pName" value="<?php echo $pName; ?>">
-                <input type="hidden" name="pDesc" value="<?php echo $pDesc; ?>">
-                <input type="hidden" name="dDate" value="<?php echo $dDate; ?>">
-                <button class="buttonUpdate" type="submit" name="update">Update Project</button>
-            </form>
+
+
+    <form action="process.php" method="GET">
+
+        <div class="project-container">
+            <label class="boldLabel">Project ID:</label>
+            <span><?php echo $pId; ?></span><br>
+            <label class="boldLabel">Project Owner:</label>
+            <span><?php echo $pName; ?></span><br>
+            <label class="boldLabel">Project Description:</label>
+            <span><?php echo $pDesc; ?> </span><br><br>
+            <label class="boldLabel">Project Due Date:</label>
+            <span><?php echo $dDate; ?> </span><br>
+            <input type="hidden" name="pId" value="<?php echo $pId; ?>">
+
+            <input type="hidden" name="action" value="delete">
+            <input class="buttonDelete" type="submit" value="Delete">
+
+            <input type="hidden" name="pId" value="<?php echo $pId; ?>">
+            <input type="hidden" name="pName" value="<?php echo $pName; ?>">
+            <input type="hidden" name="pDesc" value="<?php echo $pDesc; ?>">
+            <input type="hidden" name="dDate" value="<?php echo $dDate; ?>">
+            <input type="hidden" name="action" value="update">
+            <input class="buttonUpdate" type="submit" value="Update" >
+
+
+    <!--<form action="process.php" method="GET">
+        <div class="project-container">
+            <label class="boldLabel">Project ID:</label>
+            <span><?php echo $pId; ?></span><br>
+            <label class="boldLabel">Project Owner:</label>
+            <span><?php echo $pName; ?></span><br>
+            <label class="boldLabel">Project Description:</label>
+            <span><?php echo $pDesc; ?> </span><br><br>
+            <label class="boldLabel">Project Due Date:</label>
+            <span><?php echo $dDate; ?> </span><br>
+
+            <input type="hidden" name="pId" value="<?php echo $pId; ?>">
+
+
+            <input type="hidden" name="pId" value="<?php echo $pId; ?>">
+            <input type="hidden" name="pName" value="<?php echo $pName; ?>">
+            <input type="hidden" name="pDesc" value="<?php echo $pDesc; ?>">
+            <input type="hidden" name="dDate" value="<?php echo $dDate; ?>">
+
+            <button class="buttonDelete" type="button" name="delete" onclick="buttoncheck(0)">Delete Project</button>
+            <button class="buttonUpdate" type="button" name="update" onclick="buttoncheck(1)">Update Project</button>-->
+
+
         </div>
-    </div>
+    </form>
+
+
     <div class="milestone-container">
         <form action="deleteMilestone.php" method="GET">
-        <label class="boldLabel">Project Milestone Dates:</label><br><br>
-        <div class="dateContainerLeft">
-        <input type="checkbox" name="date[]" value="<?php echo $date1; ?>"><?php echo $date1; ?><br>
-        <input type="checkbox" name="date[]" value="<?php echo $date2; ?>"><?php echo $date2; ?><br>
-        <input type="checkbox" name="date[]" value="<?php echo $date3 ?>"><?php echo $date3 ?><br>
-        <input type="checkbox" name="date[]" value="<?php echo $date4 ?>"><?php echo $date4 ?><br>
-        <input type="checkbox" name="date[]" value="<?php echo $date5 ?>"><?php echo $date5 ?><br>
-        </div>
-        <div class="dateContainerRight">
-        <input type="checkbox" name="date[]" value="<?php echo $date6 ?>"><?php echo $date6 ?><br>
-        <input type="checkbox" name="date[]" value="<?php echo $date7 ?>"><?php echo $date7 ?><br>
-        <input type="checkbox" name="date[]" value="<?php echo $date8 ?>"><?php echo $date8 ?><br>
-        <input type="checkbox" name="date[]" value="<?php echo $date9 ?>"><?php echo $date9 ?><br>
-        <input type="checkbox" name="date[]" value="<?php echo $date10 ?>"><?php echo $date10 ?><br>
-        </div>
-        <br><br><br><br>
+            <label class="boldLabel">Project Milestone Dates:</label><br><br>
+            <div class="dateContainerLeft">
+                <input type="checkbox" name="date[]" value="<?php echo $date1; ?>"><?php echo $date1; ?><br>
+            </div>
+            <br><br><br><br>
 
-            <input type="hidden" name="userid" value="<?php echo $pId; ?>">
-            <!--<input type="hidden" name="date[]" value="<?php echo $date1; ?>">
-            <input type="hidden" name="date[]" value="<?php echo $date2; ?>">
-            <input type="hidden" name="date[]" value="<?php echo $date3; ?>">
-            <input type="hidden" name="date[]" value="<?php echo $date4; ?>">
-            <input type="hidden" name="date[]" value="<?php echo $date5; ?>">
-            <input type="hidden" name="date[]" value="<?php echo $date6; ?>">
-            <input type="hidden" name="date[]" value="<?php echo $date7; ?>">
-            <input type="hidden" name="date[]" value="<?php echo $date8; ?>">
-            <input type="hidden" name="date[]" value="<?php echo $date9; ?>">
-            <input type="hidden" name="date[]" value="<?php echo $date10; ?>">-->
+            <input type="hidden" name="pId" value="<?php echo $pId; ?>">
+            <input type="hidden" name="date[]" value="<?php echo $date1; ?>">
             <button class="buttonMilestone" type="submit" name="milestone" value="delete">Delete Milestone Date</button>
         </form>
     </div>

@@ -7,13 +7,14 @@
  */
 
 include('connect.php');
-$userid = $_GET['userid'];
+
+$pId = $_GET['pId'];
 $pName = $_GET['pName'];
 $pDesc = $_GET['pDesc'];
 $dDate = $_GET['dDate'];
 $mDate = $_GET['mDate'];
 
-echo $userid;
+echo $pId;
 echo $pName;
 echo $pDesc;
 echo $dDate;
@@ -23,8 +24,10 @@ $sql = "UPDATE projecttable
         SET pName = '$pName',
         pDesc = '$pDesc',
         dDate = '$dDate'
-        WHERE userid = '$userid'";
+        WHERE pId = '$pId'";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
+
+
 
 header("Location: BEdisplay.php");

@@ -8,12 +8,13 @@
 
 include('connect.php');
 
-$pId = $_GET['pId'];
-$pName = $_GET['pName'];
-$pDesc = $_GET['pDesc'];
-$dDate = $_GET['dDate'];
-$date1= $_GET['date1'];
-echo $userid;
+$pId = $_SESSION['pId'];
+$pName = $_SESSION['pName'];
+$pDesc = $_SESSION['pDesc'];
+$dDate = $_SESSION['dDate'];
+//$date1= $_GET['date1'];
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,9 +22,9 @@ echo $userid;
     <title>Update Form</title>
 </head>
 <body>
-<h1>New Project Entry Information</h1>
+<h1>Update Project # <?php echo $pId ?></h1>
 <form action="updateSQL.php" method="GET"><!--TODO change to POST -->
-    <input type="hidden" name="userid" value="<?php echo $pId; ?>">
+    <input type="hidden" name="pId" value="<?php echo $pId; ?>">
     <label>Project Owner:</label>
     <input type="text" name="pName"
            value="<?php echo htmlspecialchars($pName); ?>">
@@ -44,7 +45,7 @@ echo $userid;
 </form>
 <form action="insertDate.php" method="GET">
     <label>Project Milestone Dates:</label>
-    <input type="hidden" name="userid" value="<?php echo $pId; ?>">
+    <input type="hidden" name="pId" value="<?php echo $pId; ?>">
     <input type="date" name="date1" value="<?php echo htmlspecialchars($date1);?>">
     <input type="date" name="date2" value="<?php echo htmlspecialchars($date2);?>">
     <input type="date" name="date3" value="<?php echo htmlspecialchars($date3);?>">
