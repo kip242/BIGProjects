@@ -45,10 +45,10 @@ body {
     margin-right: 5px;
 	text-align: center;
 	text-decoration: none;
-	display: inline-block;
+    display: inline-block;
 	font-size: 12px;
 	border-radius: 8px;
-    float: left;
+
 }
 
 .buttonMilestone{

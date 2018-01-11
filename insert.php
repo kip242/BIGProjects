@@ -32,9 +32,9 @@ try {
         $pId = $row['pId'];
     }
 
-    foreach($dates as $date1){
-    $sql2= "INSERT INTO datetable (pId, date1)
-        VALUES ('$pId', '$date1')";
+    foreach($dates as $date){
+    $sql2= "INSERT INTO datetable (pId, date)
+        VALUES ('$pId', '$date')";
     $conn->exec($sql2);
     }
     header("Location: BEdisplay.php");

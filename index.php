@@ -11,7 +11,7 @@ if (!isset($pDesc)) {
 if (!isset($dDate)) {
     $dDate = "";
 }
-if (!isset($date1)) {$date1 = "";}
+/*if (!isset($date)) {$date = "";}
 if (!isset($date2)) {$date2 = "";}
 if (!isset($date3)) {$date3 = "";}
 if (!isset($date4)) {$date4 = "";}
@@ -20,7 +20,7 @@ if (!isset($date6)) {$date6 = "";}
 if (!isset($date7)) {$date7 = "";}
 if (!isset($date8)) {$date8 = "";}
 if (!isset($date9)) {$date9 = "";}
-if (!isset($date10)) {$date10 = "";}
+if (!isset($date10)) {$date10 = "";}*/
 
 ?>
 
@@ -53,7 +53,7 @@ if (!isset($date10)) {$date10 = "";}
     <br>
     <br>
     <label>Project Milestone Dates:</label>
-    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date1);?>">
+    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date);?>">
     <input type="date" name="date[]" value="<?php echo htmlspecialchars($date2);?>">
     <input type="date" name="date[]" value="<?php echo htmlspecialchars($date3);?>">
     <input type="date" name="date[]" value="<?php echo htmlspecialchars($date4);?>">

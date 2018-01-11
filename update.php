@@ -7,12 +7,18 @@
  */
 
 include('connect.php');
+session_start();
+
+
 
 $pId = $_SESSION['pId'];
 $pName = $_SESSION['pName'];
 $pDesc = $_SESSION['pDesc'];
 $dDate = $_SESSION['dDate'];
 //$date1= $_GET['date1'];
+
+session_unset();
+session_destroy();
 
 
 ?>
@@ -46,7 +52,7 @@ $dDate = $_SESSION['dDate'];
 <form action="insertDate.php" method="GET">
     <label>Project Milestone Dates:</label>
     <input type="hidden" name="pId" value="<?php echo $pId; ?>">
-    <input type="date" name="date1" value="<?php echo htmlspecialchars($date1);?>">
+    <input type="date" name="date" value="<?php echo htmlspecialchars($date);?>">
     <input type="date" name="date2" value="<?php echo htmlspecialchars($date2);?>">
     <input type="date" name="date3" value="<?php echo htmlspecialchars($date3);?>">
     <input type="date" name="date4" value="<?php echo htmlspecialchars($date4);?>">

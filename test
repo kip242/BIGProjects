@@ -108,3 +108,35 @@ switch ($action){
     <?php foreach ($milestone_date as $date) : ?>
             <?php echo htmlspecialchars($date); ?>
         <?php endforeach; ?>
+
+        buttons from SO with JS
+        <!--<form action="process.php" method="GET">
+                <div class="project-container">
+                    <label class="boldLabel">Project ID:</label>
+                    <span><?php echo $pId; ?></span><br>
+                    <label class="boldLabel">Project Owner:</label>
+                    <span><?php echo $pName; ?></span><br>
+                    <label class="boldLabel">Project Description:</label>
+                    <span><?php echo $pDesc; ?> </span><br><br>
+                    <label class="boldLabel">Project Due Date:</label>
+                    <span><?php echo $dDate; ?> </span><br>
+
+                    <input type="hidden" name="pId" value="<?php echo $pId; ?>">
+
+
+                    <input type="hidden" name="pId" value="<?php echo $pId; ?>">
+                    <input type="hidden" name="pName" value="<?php echo $pName; ?>">
+                    <input type="hidden" name="pDesc" value="<?php echo $pDesc; ?>">
+                    <input type="hidden" name="dDate" value="<?php echo $dDate; ?>">
+
+                    <button class="buttonDelete" type="button" name="delete" onclick="buttoncheck(0)">Delete Project</button>
+                    <button class="buttonUpdate" type="button" name="update" onclick="buttoncheck(1)">Update Project</button>
+
+
+                </div>-->
+
+                Join SQL BEdisplay
+
+                SELECT projecttable.pId, projecttable.pName, projecttable.pDesc, projecttable.dDate, datetable.date
+                                                       FROM projecttable
+                                                       JOIN datetable ON projecttable.pId = datetable.pId
