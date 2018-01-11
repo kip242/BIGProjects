@@ -6,7 +6,7 @@
  * Time: 10:45 PM
  */
 
-include('connect.php');
+/*include('connect.php');
 session_start();
 
 
@@ -17,10 +17,11 @@ $pDesc = $_SESSION['pDesc'];
 $dDate = $_SESSION['dDate'];
 //$date1= $_GET['date1'];
 
+var_dump($_SESSION);
 session_unset();
 session_destroy();
 
-
+*/
 ?>
 <!DOCTYPE html>
 <html>

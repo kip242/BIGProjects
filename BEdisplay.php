@@ -8,7 +8,7 @@
 
 
 include('connect.php');
-session_start();
+
 $dateArray = array();
 try {
     //SQL SELECT statement
@@ -36,16 +36,14 @@ try {
 </form>
 
 <?php
+
 foreach ($rows as $row) {
     $pId = $row['pId'];
     $pName = $row['pName'];
     $pDesc = $row['pDesc'];
     $dDate = $row['dDate'];
     //array_push($dateArray, $row['date']);
-    $_SESSION['pId'] = $pId;
-    $_SESSION['pName'] = $pName;
-    $_SESSION['pDesc'] = $pDesc;
-    $_SESSION['dDate'] = $dDate;
+
     ?>
     <div class="project-container">
 
@@ -80,7 +78,7 @@ foreach ($rows as $row) {
             </tr>
         </TABLE>
     </div>
-    <!--<div class="milestone-container">
+    <div class="milestone-container">
         <form action="deleteMilestone.php" method="GET">
             <label class="boldLabel">Project Milestone Dates:</label><br><br>
             <div class="dateContainerLeft">
@@ -94,8 +92,9 @@ foreach ($rows as $row) {
             <input type="hidden" name="date[]" value="<?php echo $date; ?>">
             <button class="buttonMilestone" type="submit" name="milestone" value="delete">Delete Milestone Date</button>
         </form>
-    </div>-->
+    </div>
 <?php } ?>
 </body>
 </html>
+
 

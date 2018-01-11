@@ -14,12 +14,6 @@ $pDesc = $_GET['pDesc'];
 $dDate = $_GET['dDate'];
 $mDate = $_GET['mDate'];
 
-echo $pId;
-echo $pName;
-echo $pDesc;
-echo $dDate;
-
-
 $sql = "UPDATE projecttable
         SET pName = '$pName',
         pDesc = '$pDesc',
@@ -27,7 +21,5 @@ $sql = "UPDATE projecttable
         WHERE pId = '$pId'";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
-
-
 
 header("Location: BEdisplay.php");
