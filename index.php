@@ -11,16 +11,7 @@ if (!isset($pDesc)) {
 if (!isset($dDate)) {
     $dDate = "";
 }
-/*if (!isset($date)) {$date = "";}
-if (!isset($date2)) {$date2 = "";}
-if (!isset($date3)) {$date3 = "";}
-if (!isset($date4)) {$date4 = "";}
-if (!isset($date5)) {$date5 = "";}
-if (!isset($date6)) {$date6 = "";}
-if (!isset($date7)) {$date7 = "";}
-if (!isset($date8)) {$date8 = "";}
-if (!isset($date9)) {$date9 = "";}
-if (!isset($date10)) {$date10 = "";}*/
+if (!isset($date)) {$date = "";}
 
 ?>
 
@@ -54,15 +45,15 @@ if (!isset($date10)) {$date10 = "";}*/
     <br>
     <label>Project Milestone Dates:</label>
     <input type="date" name="date[]" value="<?php echo htmlspecialchars($date);?>">
-    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date2);?>">
-    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date3);?>">
-    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date4);?>">
-    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date5);?>">
-    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date6);?>">
-    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date7);?>">
-    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date8);?>">
-    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date9);?>">
-    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date10);?>">
+    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date);?>">
+    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date);?>">
+    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date);?>">
+    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date);?>">
+    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date);?>">
+    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date);?>">
+    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date);?>">
+    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date);?>">
+    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date);?>">
     <br>
     <br>
     <input type="submit" value="Submit Project">

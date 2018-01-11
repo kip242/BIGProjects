@@ -6,49 +6,13 @@
  * Time: 8:28 AM
  */
 
+include('connect.php');
 $pId = $_GET['pId'];
-$mDate = $_GET['date'];
+$date =$_GET['date'];
 
-$sql = "UPDATE projecttable
-        SET '' = '$pName',
-        pDesc = '$pDesc',
-        dDate = '$dDate'
-        WHERE userid = '$userid'";
-$stmt = $conn->prepare($sql);
-$stmt->execute();
-
-if(isset($_GET['milestone'])){
-    if(!empty($_GET['date'])){
-        foreach($_GET['date'] as $selected){
-            echo $selected ;
-        }
-    }
+if(isset($_GET['date'])) {
+    $sql = "DELETE FROM datetable WHERE date  = '$date' ";
+    $conn->exec($sql);
 }
 
-/*$date = filter_input(INPUT_GET, 'date', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
-if($date !== NULL){
-    foreach($date as $key => $value){
-        echo $key. ' = ' . $value . '<br>';
-    }
-}else {
-    echo "No date to delete";
-}*/
-//$dates = filter_input(INPUT_GET, 'date', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
-//$toppings = filter_input(INPUT_GET, 'top', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
-/*if ($dates !== NULL){
-    foreach ($dates as $key => $value) {
-        echo $key . ' = ' . $value . '<br>';
-    }
-    }else{
-        echo 'No toppings selected';
-    }*/
-
-
-
-
-/*$sql = "DELETE FROM projecttable WHERE userid  = '$userid'";
-$conn->exec($sql);
-
-echo "Project Deleted";*/
-
-//header("Location: BEdisplay.php");
+header("Location: BEdisplay.php");

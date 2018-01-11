@@ -5,17 +5,17 @@
  * Date: 12/22/2017
  * Time: 10:08 AM
  */
-
-
 include('connect.php');
-
-$dateArray = array();
 try {
+    $pId2 = filter_input(INPUT_GET, 'pId');
+
     //SQL SELECT statement
     $result = $conn->prepare("SELECT * FROM projecttable");
     $result->execute();
     // assign returned array elements to variables
     $rows = $result->fetchAll(PDO::FETCH_ASSOC);
+
+
 } catch (PDOException $e) {
     echo "Table Retrieval Failed: " . $e->getMessage();
 }
@@ -42,11 +42,10 @@ foreach ($rows as $row) {
     $pName = $row['pName'];
     $pDesc = $row['pDesc'];
     $dDate = $row['dDate'];
-    //array_push($dateArray, $row['date']);
+
 
     ?>
     <div class="project-container">
-
         <label class="boldLabel">Project ID:</label>
         <span><?php echo $pId; ?></span><br>
         <label class="boldLabel">Project Owner:</label>
@@ -82,15 +81,25 @@ foreach ($rows as $row) {
         <form action="deleteMilestone.php" method="GET">
             <label class="boldLabel">Project Milestone Dates:</label><br><br>
             <div class="dateContainerLeft">
-                <?php foreach ($dateArray as $rowD) {
-                    $date = $rowD; ?>
-                    <input type="checkbox" name="date[]" value="<?php echo $date; ?>"><?php echo $date; ?><br>
+                <?php
+                $result2 = $conn->prepare("SELECT date FROM datetable WHERE pId = '$pId' AND date <> '0000-00-00'");
+                $result2->execute();
+                $rows2 = $result2->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($rows2 as $row2) {
+                    $date = $row2['date'];
+                    ?>
+                    <input type="checkbox" name="date"><?php echo $date; ?><br>
+
+
+                <input type="hidden" name="pId" value="<?php echo $pId; ?>">
+                <input type="hidden" name="date" value="<?php echo $date; ?>">
                 <?php } ?>
+                <br><br>
+                <button class="buttonMilestone" type="submit" name="milestone" value="delete">Delete Milestone Date</button>
+
             </div>
-            <br><br><br><br>
-            <input type="hidden" name="pId" value="<?php echo $pId; ?>">
-            <input type="hidden" name="date[]" value="<?php echo $date; ?>">
-            <button class="buttonMilestone" type="submit" name="milestone" value="delete">Delete Milestone Date</button>
+
+
         </form>
     </div>
 <?php } ?>

@@ -140,3 +140,9 @@ switch ($action){
                 SELECT projecttable.pId, projecttable.pName, projecttable.pDesc, projecttable.dDate, datetable.date
                                                        FROM projecttable
                                                        JOIN datetable ON projecttable.pId = datetable.pId
+
+                div for dates on BEdisplay
+                <?php foreach ($dateArray as $rowD) {
+                                    $date = $rowD; ?>
+                                    <input type="checkbox" name="date[]" value="<?php echo $date; ?>"><?php echo $date; ?><br>
+                                <?php } ?>

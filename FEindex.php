@@ -30,19 +30,14 @@ foreach($rows as $row){
     $pName = $row['pName'];
     $pDesc = $row['pDesc'];
     $dDate = $row['dDate'];
-?><div class="project-container">
+?><div class="FEproject-container">
  	<label>Project Owner:</label>
 	<span><?php echo $pName; ?></span><br>
 	<label>Project Description:</label>
 	<span><?php echo $pDesc; ?> </span><br>
 	<label>Project Due Date:</label>
 	<span><?php echo $dDate; ?> </span><br><br>
-    <form action="FEMoreInfo.php" method="GET">
-        <input type="hidden" name="pName" value="<?php echo $pName; ?>">
-        <input type="hidden" name="pDesc" value="<?php echo $pDesc; ?>">
-        <input type="hidden" name="dDate" value="<?php echo $dDate; ?>">
-	 	<button class="buttonMoreInfo" name="moreInfo">More Information</button>
-    </form>
+
 	 	</div>
 	 </div>
 </div><br><br><?php } ?>
