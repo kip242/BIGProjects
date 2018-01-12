@@ -14,8 +14,6 @@ try {
     $result->execute();
     // assign returned array elements to variables
     $rows = $result->fetchAll(PDO::FETCH_ASSOC);
-
-
 } catch (PDOException $e) {
     echo "Table Retrieval Failed: " . $e->getMessage();
 }
@@ -85,7 +83,7 @@ foreach ($rows as $row) {
                     $mDate = $row2['mDate'];
                     ?>
                     <input type="hidden" name="mDate" value="<?php echo $mDate; ?>">
-                    <input type="checkbox" name="mDate"><?php echo $mDate; ?><br>
+                    <input type="checkbox" name="mDate[]"><?php echo $mDate; ?><br>
                     <input type="hidden" name="pId" value="<?php echo $pId; ?>">
                 <?php } ?>
                 <br><br>

@@ -10,8 +10,14 @@ include('connect.php');
 $pId = $_GET['pId'];
 
 
-$sql = "DELETE FROM projecttable WHERE pId  = '$pId'";
-$conn->exec($sql);
+$sql = "DELETE FROM projecttable 
+        WHERE pId  = :pId";
+$stmt = $conn->prepare($sql);
+$stmt->bindParam(':pId', $pId);
+$stmt->execute();
+$stmt->closeCursor();
+
+//$conn->exec($sql);
 
 echo "Project Deleted";
 

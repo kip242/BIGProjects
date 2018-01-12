@@ -20,10 +20,17 @@ $dates = $_GET['mDate'];
 try {
 
     //insert data into database
-    $sql = "INSERT INTO projecttable (pId, pName, pDesc, dDate)
-    VALUES ('$pId', '$pName', '$pDesc', '$dDate')";
-    //use exec() because no results are returned
-    $conn->exec($sql);
+    $sql = "INSERT INTO projecttable 
+                  (pId, pName, pDesc, dDate)
+            VALUES 
+                  (:pId, :pName, :pDesc, :dDate)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':pId', $pId);
+    $stmt->bindParam(':pName', $pName);
+    $stmt->bindParam(':pDesc', $pDesc);
+    $stmt->bindParam(':dDate', $dDate);
+    $stmt->execute();
+
 
     $result = $conn->prepare("SELECT pId FROM projecttable");
     $result->execute();
@@ -33,9 +40,15 @@ try {
     }
 
     foreach($dates as $mDate){
-    $sql2= "INSERT INTO datetable (pId, mDate)
-        VALUES ('$pId', '$mDate')";
-    $conn->exec($sql2);
+    $sql2= "INSERT INTO datetable 
+                  (pId, mDate)
+            VALUES 
+                  (:pId, :mDate)";
+    $stmt = $conn->prepare($sql2);
+    $stmt->bindParam(':pId', $pId);
+    $stmt->bindParam(':mDate', $mDate);
+    $stmt->execute();
+    $stmt->closeCursor();
     }
     header("Location: BEdisplay.php");
 } catch (PDOException $e) {

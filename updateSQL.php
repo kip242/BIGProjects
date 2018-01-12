@@ -15,11 +15,18 @@ $dDate = $_GET['dDate'];
 $mDate = $_GET['mDate'];
 
 $sql = "UPDATE projecttable
-        SET pName = '$pName',
-        pDesc = '$pDesc',
-        dDate = '$dDate'
-        WHERE pId = '$pId'";
+        SET pName = :pName,
+            pDesc = :pDesc,
+            dDate = :dDate
+        WHERE 
+            pId = :pId";
 $stmt = $conn->prepare($sql);
+$stmt->bindParam(':pId', $pId);
+$stmt->bindParam(':pName', $pName);
+$stmt->bindParam(':pDesc', $pDesc);
+$stmt->bindParam(':dDate', $dDate);
 $stmt->execute();
+$stmt->closeCursor();
+
 
 header("Location: BEdisplay.php");

@@ -20,8 +20,12 @@ switch ($action) {
 
     case 'delete' :
         echo $pId;
-        $sql = "DELETE FROM projecttable WHERE pId  = '$pId'";
-        $conn->exec($sql);
+        $sql = "DELETE FROM projecttable 
+        WHERE pId  = :pId";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':pId', $pId);
+        $stmt->execute();
+        $stmt->closeCursor();
         header("Location: BEdisplay.php");
         break;
 
