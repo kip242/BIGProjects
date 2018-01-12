@@ -32,18 +32,14 @@ try {
 <br>
 <h1>Project Dashboard</h1>
 <form action="index.php">
-    <button class="buttonAdd" type="submit" name="add">Add Project</button>
+    <button class="buttonAdd" type="submit" name="add">Add Project</button><br><br>
 </form>
-
 <?php
-
 foreach ($rows as $row) {
     $pId = $row['pId'];
     $pName = $row['pName'];
     $pDesc = $row['pDesc'];
     $dDate = $row['dDate'];
-
-
     ?>
     <div class="project-container">
         <label class="boldLabel">Project ID:</label>
@@ -82,24 +78,19 @@ foreach ($rows as $row) {
             <label class="boldLabel">Project Milestone Dates:</label><br><br>
             <div class="dateContainerLeft">
                 <?php
-                $result2 = $conn->prepare("SELECT date FROM datetable WHERE pId = '$pId' AND date <> '0000-00-00'");
+                $result2 = $conn->prepare("SELECT mDate FROM datetable WHERE pId = '$pId' AND mDate <> '0000-00-00'");
                 $result2->execute();
                 $rows2 = $result2->fetchAll(PDO::FETCH_ASSOC);
                 foreach ($rows2 as $row2) {
-                    $date = $row2['date'];
+                    $mDate = $row2['mDate'];
                     ?>
-                    <input type="checkbox" name="date"><?php echo $date; ?><br>
-
-
-                <input type="hidden" name="pId" value="<?php echo $pId; ?>">
-                <input type="hidden" name="date" value="<?php echo $date; ?>">
+                    <input type="hidden" name="mDate" value="<?php echo $mDate; ?>">
+                    <input type="checkbox" name="mDate"><?php echo $mDate; ?><br>
+                    <input type="hidden" name="pId" value="<?php echo $pId; ?>">
                 <?php } ?>
                 <br><br>
                 <button class="buttonMilestone" type="submit" name="milestone" value="delete">Delete Milestone Date</button>
-
             </div>
-
-
         </form>
     </div>
 <?php } ?>

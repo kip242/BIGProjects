@@ -7,12 +7,16 @@
  */
 
 include('connect.php');
-$pId = $_GET['pId'];
-$date =$_GET['date'];
 
-if(isset($_GET['date'])) {
-    $sql = "DELETE FROM datetable WHERE date  = '$date' ";
+$pId = $_GET['pId'];
+$mDate = $_GET['mDate'];
+
+echo $pId;
+echo $mDate;
+
+if(isset($_GET['mDate'])) {
+    $sql = "DELETE FROM datetable WHERE pId = '$pId' AND mDate  = '$mDate' ";
     $conn->exec($sql);
 }
 
-header("Location: BEdisplay.php");
+//header("Location: BEdisplay.php");

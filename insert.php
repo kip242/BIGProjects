@@ -15,7 +15,7 @@ $pDesc = filter_input(INPUT_GET, 'pDesc');
 $pDesc = nl2br($pDesc, false);
 $dDate = filter_input(INPUT_GET, 'dDate');
 
-$dates = $_GET['date'];
+$dates = $_GET['mDate'];
 
 try {
 
@@ -32,9 +32,9 @@ try {
         $pId = $row['pId'];
     }
 
-    foreach($dates as $date){
-    $sql2= "INSERT INTO datetable (pId, date)
-        VALUES ('$pId', '$date')";
+    foreach($dates as $mDate){
+    $sql2= "INSERT INTO datetable (pId, mDate)
+        VALUES ('$pId', '$mDate')";
     $conn->exec($sql2);
     }
     header("Location: BEdisplay.php");

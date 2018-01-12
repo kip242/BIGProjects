@@ -11,7 +11,7 @@ if (!isset($pDesc)) {
 if (!isset($dDate)) {
     $dDate = "";
 }
-if (!isset($date)) {$date = "";}
+if (!isset($mDate)) {$mDate = "";}
 
 ?>
 
@@ -44,16 +44,16 @@ if (!isset($date)) {$date = "";}
     <br>
     <br>
     <label>Project Milestone Dates:</label>
-    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date);?>">
-    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date);?>">
-    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date);?>">
-    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date);?>">
-    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date);?>">
-    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date);?>">
-    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date);?>">
-    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date);?>">
-    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date);?>">
-    <input type="date" name="date[]" value="<?php echo htmlspecialchars($date);?>">
+    <input type="date" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
+    <input type="date" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
+    <input type="date" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
+    <input type="date" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
+    <input type="date" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
+    <input type="date" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
+    <input type="date" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
+    <input type="date" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
+    <input type="date" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
+    <input type="date" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
     <br>
     <br>
     <input type="submit" value="Submit Project">
