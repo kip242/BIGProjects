@@ -59,27 +59,8 @@ switch ($action) {
             <br>
             <br>
         </form>
-        <form action="insertDate.php" method="GET">
-            <label>Project Milestone Dates:</label>
-            <input type="hidden" name="pId" value="<?php echo $pId; ?>">
-            <input type="date" name="date" value="<?php echo htmlspecialchars($date); ?>">
-            <input type="date" name="date2" value="<?php echo htmlspecialchars($date2); ?>">
-            <input type="date" name="date3" value="<?php echo htmlspecialchars($date3); ?>">
-            <input type="date" name="date4" value="<?php echo htmlspecialchars($date4); ?>">
-            <input type="date" name="date5" value="<?php echo htmlspecialchars($date5); ?>">
-            <input type="date" name="date6" value="<?php echo htmlspecialchars($date6); ?>">
-            <input type="date" name="date7" value="<?php echo htmlspecialchars($date7); ?>">
-            <input type="date" name="date8" value="<?php echo htmlspecialchars($date8); ?>">
-            <input type="date" name="date9" value="<?php echo htmlspecialchars($date9); ?>">
-            <input type="date" name="date10" value="<?php echo htmlspecialchars($date10); ?>">
-            <input type="submit" name="submit" value="Add Date">
-        </form>
-
         </body>
         </html>
-
-
         <?php
-
         break;
-} ?>
+    } ?>

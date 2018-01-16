@@ -8,17 +8,27 @@
 
 include('connect.php');
 
+$dateId = array();
+if(isset($_GET['milestone'])){
+
 $pId = $_GET['pId'];
+$dateId = $_GET['dateId'];
 $mDate = $_GET['mDate'];
 
 
-if(isset($_GET['mDate'])) {
-    $sql = "DELETE FROM datetable 
-        WHERE pId = :pId AND mDate = :mDate";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':pId', $pId);
-    $stmt->bindParam(':mDate', $mDate);
-    $stmt->execute();
+echo $pId . "<br>";
+print_r($dateId) . "<br>";
+echo $mDate ;
 }
 
-header("Location: BEdisplay.php");
+
+/*if(isset($_GET['mDate'])) {
+    $sql = "DELETE FROM datetable 
+        WHERE dateId = :dateId";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':dateId', $dateId);
+
+    $stmt->execute();
+}*/
+
+//header("Location: BEdisplay.php");

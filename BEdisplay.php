@@ -17,6 +17,58 @@ try {
 } catch (PDOException $e) {
     echo "Table Retrieval Failed: " . $e->getMessage();
 }
+
+function IsChecked($chkname, $dateId)
+{
+    if (!empty($_GET[$chkname])) {
+        foreach ($_GET[$chkname] as $chkval) {
+            if ($chkval == $dateId) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+if(isset($_GET['milestone'])) {
+    $aDates = $_GET['dateId'];
+
+        if (IsChecked('mDate', '1')) {
+            echo ' 1 is checked. ';
+
+            $dateId = $aDates[0];
+            echo $dateId;
+            $sql = "DELETE FROM datetable 
+                    WHERE dateId  = :dateId";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':dateId', $dateId);
+            $stmt->execute();
+            $stmt->closeCursor();
+        }
+        if (IsChecked('mDate', '2')) {
+            echo ' 2 is checked. ';
+
+            $dateId = $aDates[1];
+            $sql = "DELETE FROM datetable 
+                    WHERE dateId  = :dateId";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':dateId', $dateId);
+            $stmt->execute();
+            $stmt->closeCursor();
+        }
+        if (IsChecked('mDate', '3')) {
+            echo ' 3 is checked. ';
+
+            $dateId = $aDates[2];
+            $sql = "DELETE FROM datetable 
+                    WHERE dateId  = :dateId";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':dateId', $dateId);
+            $stmt->execute();
+            $stmt->closeCursor();
+        }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -72,23 +124,32 @@ foreach ($rows as $row) {
         </TABLE>
     </div>
     <div class="milestone-container">
-        <form action="deleteMilestone.php" method="GET">
+        <form action="#" method="GET">
             <label class="boldLabel">Project Milestone Dates:</label><br><br>
-            <div class="dateContainerLeft">
+
                 <?php
-                $result2 = $conn->prepare("SELECT mDate FROM datetable WHERE pId = '$pId' AND mDate <> '0000-00-00'");
+                $result2 = $conn->prepare("SELECT * FROM datetable WHERE pId = '$pId' AND mDate <> '0000-00-00'");
                 $result2->execute();
                 $rows2 = $result2->fetchAll(PDO::FETCH_ASSOC);
+                $count = 0;
+
                 foreach ($rows2 as $row2) {
+                    $count++;
+                    $pId = $row2['pId'];
+                    $dateId = $row2['dateId'];
                     $mDate = $row2['mDate'];
                     ?>
-                    <input type="hidden" name="mDate" value="<?php echo $mDate; ?>">
-                    <input type="checkbox" name="mDate[]"><?php echo $mDate; ?><br>
-                    <input type="hidden" name="pId" value="<?php echo $pId; ?>">
+
+                    <input type="hidden" name="pId" value="<?php echo $pId; ?>"
+                    <input type="hidden" name="dateId[]" value="<?php echo $dateId; ?>">
+                    <input type="hidden" name="mDate[]" value="<?php echo $mDate; ?>">
+                    <br><input type="checkbox" name="mDate[]" value="<?php echo $count ?>"><?php echo $mDate; ?>
+                    <input type="text" name="dateId[]" value="<?php echo $dateId?>"><?php echo $count?>
+
                 <?php } ?>
                 <br><br>
-                <button class="buttonMilestone" type="submit" name="milestone" value="delete">Delete Milestone Date</button>
-            </div>
+                <button type="submit" name="milestone">Delete</button>
+
         </form>
     </div>
 <?php } ?>
