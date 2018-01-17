@@ -135,6 +135,10 @@ switch ($action){
 
                 </div>-->
 
+                FEindex SQL
+
+                SELECT pId, pName, pDesc, dDate FROM projecttable
+
                 Join SQL BEdisplay
 
                 SELECT projecttable.pId, projecttable.pName, projecttable.pDesc, projecttable.dDate, datetable.date
@@ -146,3 +150,19 @@ switch ($action){
                                     $date = $rowD; ?>
                                     <input type="checkbox" name="date[]" value="<?php echo $date; ?>"><?php echo $date; ?><br>
                                 <?php } ?>
+
+     deleteMilestone.php if needed
+     include('connect.php');
+
+     $dateId = array();
+     if(isset($_GET['milestone'])){
+
+     $pId = $_GET['pId'];
+     $dateId = $_GET['dateId'];
+     $mDate = $_GET['mDate'];
+
+
+     echo $pId . "<br>";
+     print_r($dateId) . "<br>";
+     echo $mDate ;
+     }

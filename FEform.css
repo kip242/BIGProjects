@@ -1,0 +1,25 @@
+@charset "ISO-8859-1";
+body {
+    background: #00a1f1;
+    box-sizing: border-box;
+}
+
+.project-container {
+    background: #ffbb00;
+    border: solid;
+    border-radius: 5px;
+    padding: 5px;
+    width: 95%;
+    float: left;
+    margin-bottom: 10px;
+}
+
+.FEproject-container-behind {
+    background: #f65314;
+    border: solid;
+    border-radius: 5px;
+    padding: 5px;
+    width: 95%;
+    float: left;
+    margin-bottom: 10px;
+}
