@@ -7,8 +7,12 @@
  */
 
 include('connect.php');
+
+//get pId from previous page
 $pId = $_GET['pId'];
 
+
+//SQL delete statement bind to prevent SQL injection
 $sql = "DELETE FROM projecttable 
         WHERE pId  = :pId";
 $stmt = $conn->prepare($sql);

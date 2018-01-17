@@ -10,7 +10,7 @@ include('connect.php');
 
 //get variables from index.php
 $pId = filter_input(INPUT_GET, 'pId');
-$pName = filter_input(INPUT_GET, 'pName'); //TODO change to INPUT_POST
+$pName = filter_input(INPUT_GET, 'pName');
 $pDesc = filter_input(INPUT_GET, 'pDesc');
 $pDesc = nl2br($pDesc, false);
 $dDate = filter_input(INPUT_GET, 'dDate');
@@ -32,6 +32,7 @@ try {
     $stmt->execute();
 
 
+    //get pId for each row
     $result = $conn->prepare("SELECT pId FROM projecttable");
     $result->execute();
     $rows = $result->fetchAll(PDO::FETCH_ASSOC);
@@ -39,6 +40,7 @@ try {
         $pId = $row['pId'];
     }
 
+    //insert milestone dates into datetable based on pId
     foreach($dates as $mDate){
     $sql2= "INSERT INTO datetable 
                   (pId, mDate)

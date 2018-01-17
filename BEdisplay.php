@@ -7,17 +7,19 @@
  */
 include('connect.php');
 try {
-    $pId2 = filter_input(INPUT_GET, 'pId');
+    //$pId2 = filter_input(INPUT_GET, 'pId');
 
     //SQL SELECT statement
     $result = $conn->prepare("SELECT * FROM projecttable");
     $result->execute();
+
     // assign returned array elements to variables
     $rows = $result->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     echo "Table Retrieval Failed: " . $e->getMessage();
 }
 
+//this function checks to see which milestone date boxes are checked
 function IsChecked($chkname, $dateId)
 {
     if (!empty($_GET[$chkname])) {
@@ -30,6 +32,7 @@ function IsChecked($chkname, $dateId)
     return false;
 }
 
+//if 1-3 milestone boxes are checked delete from datetable
 if(isset($_GET['milestone'])) {
     $aDates = $_GET['dateId'];
 
@@ -128,6 +131,7 @@ foreach ($rows as $row) {
             <label class="boldLabel">Project Milestone Dates:</label><br><br>
 
                 <?php
+                //select and display all milestone dates
                 $result2 = $conn->prepare("SELECT * FROM datetable WHERE pId = '$pId' AND mDate <> '0000-00-00'");
                 $result2->execute();
                 $rows2 = $result2->fetchAll(PDO::FETCH_ASSOC);
@@ -141,15 +145,13 @@ foreach ($rows as $row) {
                     ?>
 
                     <input type="hidden" name="pId" value="<?php echo $pId; ?>"
-                    <input type="hidden" name="dateId[]" value="<?php echo $dateId; ?>">
                     <input type="hidden" name="mDate[]" value="<?php echo $mDate; ?>">
                     <br><input type="checkbox" name="mDate[]" value="<?php echo $count ?>"><?php echo $mDate; ?>
-                    <input type="text" name="dateId[]" value="<?php echo $dateId?>"><?php echo $count?>
+                    <input type="hidden" name="dateId[]" value="<?php echo $dateId?>">
 
                 <?php } ?>
                 <br><br>
                 <button type="submit" name="milestone">Delete</button>
-
         </form>
     </div>
 <?php } ?>

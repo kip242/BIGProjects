@@ -25,12 +25,11 @@ try {
 <?php
 
 //get today's date
-$today = date('Y-m-d');
+$today = date('F d Y');
 ?>
 
 <h2>Hello today is <?php echo $today ?></h2>
 <?php
-
 
 foreach ($rows as $row) {
     $pId = $row['pId'];
@@ -38,7 +37,7 @@ foreach ($rows as $row) {
     $pDesc = $row['pDesc'];
     $dDate = $row['dDate'];
 
-    //get mDates from datetable for each project based on pId
+    //get milestone dates from datetable for each project based on pId
     $result2 = $conn->prepare("SELECT mDate FROM datetable WHERE pId = '$pId' LIMIT 1");
     $result2->execute();
     $rows2 = $result2->fetch(PDO::FETCH_ASSOC);

@@ -22,7 +22,7 @@ if (!isset($mDate)) {$mDate = "";}
 </head>
 <body>
 <h1>New Project Entry Information</h1>
-<form action="insert.php" method="GET"><!--TODO change to POST -->
+<form action="insert.php" method="GET">
     <label>Project Number:</label>
     <input type="text" name="pId"
            value="<?php echo htmlspecialchars($pId); ?>">
@@ -37,7 +37,6 @@ if (!isset($mDate)) {$mDate = "";}
     <textarea name="pDesc" maxlength="1000" rows="4" cols="50"><?php echo htmlspecialchars($pDesc); ?></textarea>
     <br>
     <br>
-
     <label>Project Due Date:</label>
     <input type="date" name="dDate"
            value="<?php echo htmlspecialchars($dDate); ?>">
