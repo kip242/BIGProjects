@@ -1,0 +1,78 @@
+@charset "ISO-8859-1";
+body {
+    background: #00a1f1;
+    box-sizing: border-box;
+}
+
+.project-container {
+    background: #ffbb00;
+    border: solid;
+    border-radius: 5px;
+    padding: 5px;
+    width: auto;
+    margin-bottom: 10px;
+}
+
+.FEproject-container-behind {
+    background: #f65314;
+    border: solid;
+    border-radius: 5px;
+    padding: 5px;
+    width: auto;
+    margin-bottom: 10px;
+}
+
+.adminButton {
+    background: #00FF00;
+    float: right;
+    border-radius: 8px;
+    font-size: 12px;
+    padding: 5px;
+}
+
+.loginContainer {
+    background: #FFFFFF;
+    width: 700px ;
+    margin-left: auto ;
+    margin-right: auto ;
+    border: solid;
+    border-radius: 8px;
+}
+
+.form-control {
+
+    position: relative;
+    height: auto;
+    border-radius: 8px;
+    border: solid;
+    border-color: gainsboro;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    text-align: center;
+    display: block;
+}
+
+.button {
+    position: relative;
+    width: 350px;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+    text-align: center;
+    display: block;
+}
+
+h1{
+    color: #FFFFFF;
+}
+
+h2 {
+    color: #ffffff;
+}
+
+

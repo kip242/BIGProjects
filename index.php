@@ -1,6 +1,7 @@
 <?php
-
-
+if (!isset($pId)){
+    $pId = "";
+}
 if (!isset($pName)) {
     $pName = "";
 }
@@ -10,60 +11,76 @@ if (!isset($pDesc)) {
 if (!isset($dDate)) {
     $dDate = "";
 }
-if (!isset($date1)) {$date1 = "";}
-if (!isset($date2)) {$date2 = "";}
-if (!isset($date3)) {$date3 = "";}
-if (!isset($date4)) {$date4 = "";}
-if (!isset($date5)) {$date5 = "";}
-if (!isset($date6)) {$date6 = "";}
-if (!isset($date7)) {$date7 = "";}
-if (!isset($date8)) {$date8 = "";}
-if (!isset($date9)) {$date9 = "";}
-if (!isset($date10)) {$date10 = "";}
+if (!isset($mDate)) {$mDate = "";}
 
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Backend Form</title>
+    <title>B.I.G. Project Entry</title>
+    <link rel="stylesheet" type="text/css" href="form.css">
+    <script>
+        function charCount(field, count, max){
+            count.value = max - field.value.length;
+        }
+    </script>
 </head>
 <body>
-<h1>New Project Entry Information</h1>
-<form action="insert.php" method="GET"><!--TODO change to POST -->
-    <label>Project Owner:</label>
-    <input type="text" name="pName"
-           value="<?php echo htmlspecialchars($pName); ?>">
+<h1>B.I.G. Project Entry Information</h1>
+<form action="insert.php" method="GET">
+    <div id="fields">
+    <h4>Project Number:</h4>
+    <span><input type="text" id="beinput" name="pId"
+                        value="<?php echo htmlspecialchars($pId); ?>"></span>
+    </div>
     <br>
     <br>
-    <label>Project Description:</label>
-    <textarea name="pDesc" maxlength="1000" rows="4" cols="50"><?php echo htmlspecialchars($pDesc) ?></textarea>
+    <div id="fields">
+        <h4>Project Owner:</h4>
+        <span><input type="text" id="beinput" name="pName"
+           value="<?php echo htmlspecialchars($pName); ?>"></span>
+    </div>
+    <br>
+    <br>
+    <div id="fields">
+        <h4>Project Description:</h4>
+            <span><textarea name="pDesc" id="beinput" maxlength="1000" rows="12" cols="100"
+                            onKeydown="charCount(this, 1000);"
+                            onKeyup="charCount(this, left, 1000);"
+                            ><?php echo htmlspecialchars($pDesc); ?></textarea>
+                            <input id="textCounter" readonly type="text" name="left" size=4 maxlength=4
+                                   value="1000"></span>
+    </div>
+    <br>
+    <br>
+    <div id="fields">
+        <h4>Project Due Date:</h4>
+        <span><input type="date" id="beinput" name="dDate"
+           value="<?php echo htmlspecialchars($dDate); ?>"></span>
+    </div>
     <br>
     <br>
 
-    <label>Project Due Date:</label>
-    <input type="date" name="dDate"
-           value="<?php echo htmlspecialchars($dDate) ?>">
+    <h4>Milestone Dates:</h4>
+    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
+    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
+    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
+    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
+    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
+    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
+    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
+    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
+    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
+    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
     <br>
     <br>
-    <label>Project Milestone Dates:</label>
-    <input type="date" name="date1" value="<?php echo htmlspecialchars($date1)?>">
-    <input type="date" name="date2" value="<?php echo htmlspecialchars($date2)?>">
-    <input type="date" name="date3" value="<?php echo htmlspecialchars($date3)?>">
-    <input type="date" name="date4" value="<?php echo htmlspecialchars($date4)?>">
-    <input type="date" name="date5" value="<?php echo htmlspecialchars($date5)?>">
-    <input type="date" name="date6" value="<?php echo htmlspecialchars($date6)?>">
-    <input type="date" name="date7" value="<?php echo htmlspecialchars($date7)?>">
-    <input type="date" name="date8" value="<?php echo htmlspecialchars($date8)?>">
-    <input type="date" name="date9" value="<?php echo htmlspecialchars($date9)?>">
-    <input type="date" name="date10" value="<?php echo htmlspecialchars($date10)?>">
-    <br>
-    <br>
-    <input type="submit" value="Submit Project">
+
+    <input class="buttonIndex" type="submit" value="Submit Project">
 </form>
 <br>
 <form action="BEdisplay.php" method="GET">
-    <input type="submit" name="submit" value="Go to Project List">
+    <input class="buttonIndex" type="submit" name="submit" value="Go to Project List">
 </form>
 </body>
 </html>

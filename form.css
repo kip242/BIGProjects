@@ -14,6 +14,7 @@ body {
     margin-bottom: 10px;
     height: 350px;
 }
+
 .boldLabel{
     font-weight: bold;
 }
@@ -27,33 +28,32 @@ body {
     height: 350px;
 }
 
-.progress-bar {
-	color:#000;
-	background-color:#f1f1f1;
-	border-radius: 5px;
-}
-
 .container {
 	padding:0.01em 16px;
 }
 
 .buttonDelete {
 	background-color: #FF0000;
-	border: none;
+	border-right-color: darkgrey;
+    -moz-border-right-colors: darkgrey;
+    border-bottom-color: darkgrey;
+    -moz-border-bottom-colors: darkgrey;
 	color: white;
 	padding: 15px 32px;
     margin-right: 5px;
 	text-align: center;
 	text-decoration: none;
-	display: inline-block;
+    display: inline-block;
 	font-size: 12px;
 	border-radius: 8px;
-    float: left;
 }
 
 .buttonMilestone{
     background-color: #A0A0A0;
-    border: none;
+    border-right-color: darkgrey;
+    -moz-border-right-colors: darkgrey;
+    border-bottom-color: darkgrey;
+    -moz-border-bottom-colors: darkgrey;
     color: white;
     padding: 15px 32px;
     text-align: center;
@@ -65,7 +65,10 @@ body {
 
 .buttonUpdate {
     background-color: #0000FF;
-    border: none;
+    border-right-color: darkgrey;
+    -moz-border-right-colors: darkgrey;
+    border-bottom-color: darkgrey;
+    -moz-border-bottom-colors: darkgrey;
     color: white;
     padding: 15px 32px;
     text-align: center;
@@ -77,7 +80,10 @@ body {
 
 .buttonAdd {
     background-color: #9c27b0;
-    border: none;
+    border-right-color: darkgrey;
+    -moz-border-right-colors: darkgrey;
+    border-bottom-color: darkgrey;
+    -moz-border-bottom-colors: darkgrey;
     color: white;
     padding: 15px 32px;
     text-align: center;
@@ -96,15 +102,68 @@ body {
     text-decoration: none;
     display: inline-block;
     font-size: 12px;
-    border-radius: 8px;}
+    border-radius: 8px;
+}
 
 .dateContainerLeft{
     float: left;
     margin-right: 60px;
 }
 
-
-.purple{
-	color:#fff;
-	background-color:#9c27b0
+#label{
+    font-weight: bold;
+    margin-right: 30px;
 }
+
+#beinput{
+    display: inline;
+    border: solid;
+    border-color: gainsboro;
+    border-radius: 8px;
+}
+
+#fields{
+    width: 500px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#fields > label{
+    display:inline-block;
+    width:150px;
+    font-weight:bold;
+    vertical-align:top;
+}
+
+#fields > span {
+    display: inline-block;
+}
+
+h4{
+    margin-bottom:4px;
+}
+
+.buttonIndex{
+    background-color: #444444;
+    border-right-color: darkgrey;
+    -moz-border-right-colors: darkgrey;
+    border-bottom-color: darkgrey;
+    -moz-border-bottom-colors: darkgrey;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 8px;
+}
+
+#textCounter{
+    background: #4cbb17;
+    border: none;
+}
+
+
+
+
+

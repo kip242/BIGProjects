@@ -9,28 +9,49 @@
 include('connect.php');
 
 //get variables from index.php
-$pName = filter_input(INPUT_GET, 'pName'); //TODO change to INPUT_POST
+$pId = filter_input(INPUT_GET, 'pId');
+$pName = filter_input(INPUT_GET, 'pName');
 $pDesc = filter_input(INPUT_GET, 'pDesc');
 $pDesc = nl2br($pDesc, false);
 $dDate = filter_input(INPUT_GET, 'dDate');
-$mDate = filter_input(INPUT_GET, 'dates');
-$date1 = filter_input(INPUT_GET, 'date1');
-$date2 = filter_input(INPUT_GET, 'date2');
-$date3 = filter_input(INPUT_GET, 'date3');
-$date4 = filter_input(INPUT_GET, 'date4');
-$date5 = filter_input(INPUT_GET, 'date5');
-$date6 = filter_input(INPUT_GET, 'date6');
-$date7 = filter_input(INPUT_GET, 'date7');
-$date8 = filter_input(INPUT_GET, 'date8');
-$date9 = filter_input(INPUT_GET, 'date9');
-$date10 = filter_input(INPUT_GET, 'date10');
+
+$dates = $_GET['mDate'];
+
 try {
 
     //insert data into database
-    $sql = "INSERT INTO projecttable (pName, pDesc, dDate, mDate, date1, date2, date3, date4, date5, date6, date7, date8,date9,date10)
-    VALUES ('$pName', '$pDesc', '$dDate', '$mDate', '$date1', '$date2', '$date3', '$date4', '$date5', '$date6', '$date7', '$date8', '$date9', '$date10')";
-    //use exec() because no results are returned
-    $conn->exec($sql);
+    $sql = "INSERT INTO projecttable 
+                  (pId, pName, pDesc, dDate)
+            VALUES 
+                  (:pId, :pName, :pDesc, :dDate)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':pId', $pId);
+    $stmt->bindParam(':pName', $pName);
+    $stmt->bindParam(':pDesc', $pDesc);
+    $stmt->bindParam(':dDate', $dDate);
+    $stmt->execute();
+
+
+    //get pId for each row
+    $result = $conn->prepare("SELECT pId FROM projecttable");
+    $result->execute();
+    $rows = $result->fetchAll(PDO::FETCH_ASSOC);
+    foreach($rows as $row){
+        $pId = $row['pId'];
+    }
+
+    //insert milestone dates into datetable based on pId
+    foreach($dates as $mDate){
+    $sql2= "INSERT INTO datetable 
+                  (pId, mDate)
+            VALUES 
+                  (:pId, :mDate)";
+    $stmt = $conn->prepare($sql2);
+    $stmt->bindParam(':pId', $pId);
+    $stmt->bindParam(':mDate', $mDate);
+    $stmt->execute();
+    $stmt->closeCursor();
+    }
     header("Location: BEdisplay.php");
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();

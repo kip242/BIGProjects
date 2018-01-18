@@ -108,3 +108,61 @@ switch ($action){
     <?php foreach ($milestone_date as $date) : ?>
             <?php echo htmlspecialchars($date); ?>
         <?php endforeach; ?>
+
+        buttons from SO with JS
+        <!--<form action="process.php" method="GET">
+                <div class="project-container">
+                    <label class="boldLabel">Project ID:</label>
+                    <span><?php echo $pId; ?></span><br>
+                    <label class="boldLabel">Project Owner:</label>
+                    <span><?php echo $pName; ?></span><br>
+                    <label class="boldLabel">Project Description:</label>
+                    <span><?php echo $pDesc; ?> </span><br><br>
+                    <label class="boldLabel">Project Due Date:</label>
+                    <span><?php echo $dDate; ?> </span><br>
+
+                    <input type="hidden" name="pId" value="<?php echo $pId; ?>">
+
+
+                    <input type="hidden" name="pId" value="<?php echo $pId; ?>">
+                    <input type="hidden" name="pName" value="<?php echo $pName; ?>">
+                    <input type="hidden" name="pDesc" value="<?php echo $pDesc; ?>">
+                    <input type="hidden" name="dDate" value="<?php echo $dDate; ?>">
+
+                    <button class="buttonDelete" type="button" name="delete" onclick="buttoncheck(0)">Delete Project</button>
+                    <button class="buttonUpdate" type="button" name="update" onclick="buttoncheck(1)">Update Project</button>
+
+
+                </div>-->
+
+                FEindex SQL
+
+                SELECT pId, pName, pDesc, dDate FROM projecttable
+
+                Join SQL BEdisplay
+
+                SELECT projecttable.pId, projecttable.pName, projecttable.pDesc, projecttable.dDate, datetable.date
+                                                       FROM projecttable
+                                                       JOIN datetable ON projecttable.pId = datetable.pId
+
+                div for dates on BEdisplay
+                <?php foreach ($dateArray as $rowD) {
+                                    $date = $rowD; ?>
+                                    <input type="checkbox" name="date[]" value="<?php echo $date; ?>"><?php echo $date; ?><br>
+                                <?php } ?>
+
+     deleteMilestone.php if needed
+     include('connect.php');
+
+     $dateId = array();
+     if(isset($_GET['milestone'])){
+
+     $pId = $_GET['pId'];
+     $dateId = $_GET['dateId'];
+     $mDate = $_GET['mDate'];
+
+
+     echo $pId . "<br>";
+     print_r($dateId) . "<br>";
+     echo $mDate ;
+     }

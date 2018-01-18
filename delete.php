@@ -7,13 +7,18 @@
  */
 
 include('connect.php');
-$userid = $_GET['userid'];
+
+//get pId from previous page
+$pId = $_GET['pId'];
 
 
-$sql = "DELETE FROM projecttable WHERE userid  = '$userid'";
-$conn->exec($sql);
-
-echo "Project Deleted";
+//SQL delete statement bind to prevent SQL injection
+$sql = "DELETE FROM projecttable 
+        WHERE pId  = :pId";
+$stmt = $conn->prepare($sql);
+$stmt->bindParam(':pId', $pId);
+$stmt->execute();
+$stmt->closeCursor();
 
 header("Location: BEdisplay.php");
 

@@ -7,24 +7,26 @@
  */
 
 include('connect.php');
-$userid = $_GET['userid'];
+
+$pId = $_GET['pId'];
 $pName = $_GET['pName'];
 $pDesc = $_GET['pDesc'];
 $dDate = $_GET['dDate'];
 $mDate = $_GET['mDate'];
 
-echo $userid;
-echo $pName;
-echo $pDesc;
-echo $dDate;
-
-
 $sql = "UPDATE projecttable
-        SET pName = '$pName',
-        pDesc = '$pDesc',
-        dDate = '$dDate'
-        WHERE userid = '$userid'";
+        SET pName = :pName,
+            pDesc = :pDesc,
+            dDate = :dDate
+        WHERE 
+            pId = :pId";
 $stmt = $conn->prepare($sql);
+$stmt->bindParam(':pId', $pId);
+$stmt->bindParam(':pName', $pName);
+$stmt->bindParam(':pDesc', $pDesc);
+$stmt->bindParam(':dDate', $dDate);
 $stmt->execute();
+$stmt->closeCursor();
+
 
 header("Location: BEdisplay.php");
