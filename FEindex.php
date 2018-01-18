@@ -21,14 +21,22 @@ try {
 </head>
 <body>
 <br>
-<h1>Project Dashboard</h1>
+<h1>B.I.G Project Dashboard</h1>
+<div>
+    <form action="adminLogin">
+    <button class="adminButton">Admin Login</button>
+    </form>
+</div>
 <?php
 
 //get today's date
-$today = date('F d Y');
+$today = date('Y-m-d');
+$todayd = date('F d Y');
 ?>
 
-<h2>Hello today is <?php echo $today ?></h2>
+<h2>Hello today is <?php echo $todayd ?></h2>
+
+
 <?php
 
 foreach ($rows as $row) {
@@ -56,7 +64,7 @@ foreach ($rows as $row) {
             <span><?php echo $dDate; ?> </span><br>
         </div>
         <br>
-        <br>
+
     <?php } else { ?>
         <div class="FEproject-container-behind">
             <label>Project Number:</label>
@@ -70,7 +78,7 @@ foreach ($rows as $row) {
             <h1>Project behind schedule!</h1>
         </div>
         <br>
-        <br>
+
     <?php }
 } ?>
 </body>
