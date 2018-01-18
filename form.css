@@ -98,6 +98,14 @@ body {
     margin-right: 60px;
 }
 
+#label{
+    font-weight: bold;
+}
+
+#beinput{
+    display: block;
+}
+
 
 
 

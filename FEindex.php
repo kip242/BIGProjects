@@ -16,12 +16,12 @@ try {
 <html>
 <head>
     <meta charset="ISO-8859-1">
-    <title>Front End Display</title>
+    <title>B.I.G Projects</title>
     <link rel="stylesheet" type="text/css" href="FEform.css">
 </head>
 <body>
 <br>
-<h1>B.I.G Project Dashboard</h1>
+<h1>B.I.G. Project Dashboard</h1>
 <div>
     <form action="adminLogin">
     <button class="adminButton">Admin Login</button>

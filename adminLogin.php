@@ -6,7 +6,7 @@
  * Time: 1:10 PM
  */
 
-session_start();
+
 include('connect.php');
 
 ?>
@@ -31,10 +31,9 @@ include('connect.php');
         <input type="password" class="form-control" name="password" placeholder="password">
         <br>
         <br>
-        <input id ="button" class = "button" type="submit"  name="submit" value ="Log In">
+        <input id ="button" class="button" type="submit"  name="submit" value="Log In">
         <br>
         <br>
-        <input type ="checkbox" id ="RememberMe" value = "Remember Me"><label for="RememberMe"> Remember Me</label><br>
     </form>
     </div>
 
@@ -63,21 +62,8 @@ function Login(){
     }elseif (!$row) {
         echo "Please provide valid username/password.";
     }
-    //$stmt->closeCursor();
+    $stmt->closeCursor();
 }
-
-/*if(isset($_GET['submit'])){
-    require_once 'connect.php';
-    $username = $_GET['username'];
-    echo $username;
-    $password = $_GET['password'];
-    echo $password;
-    if(Login($username, $password)==true){
-        echo "Login Successful";
-    }else{
-        echo "Please provide valid username/password";
-    }
-}*/
 
 if (isset($_GET['submit'])){
     Login();

@@ -151,7 +151,7 @@ foreach ($rows as $row) {
 
                 <?php } ?>
                 <br><br>
-                <button type="submit" name="milestone">Delete</button>
+                <button type="submit" class="buttonDelete" name="milestone">Delete</button>
         </form>
     </div>
 <?php } ?>
