@@ -161,6 +161,8 @@ h4{
 #textCounter{
     background: #4cbb17;
     border: none;
+    margin-right: 2px;
+    padding-right: 0;
 }
 
 

@@ -49,8 +49,8 @@ if (!isset($mDate)) {$mDate = "";}
                             onKeydown="charCount(this, 1000);"
                             onKeyup="charCount(this, left, 1000);"
                             ><?php echo htmlspecialchars($pDesc); ?></textarea>
-                            <input id="textCounter" readonly type="text" name="left" size=4 maxlength=4
-                                   value="1000"></span>
+                            <input id="textCounter" readonly type="text" name="left" size=2 maxlength=4
+                                   value="1000">characters left.</span>
     </div>
     <br>
     <br>
