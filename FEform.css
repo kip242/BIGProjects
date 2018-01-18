@@ -37,8 +37,6 @@ body {
     margin-right: auto ;
     border: solid;
     border-radius: 8px;
-
-
 }
 
 .form-control {
@@ -67,6 +65,14 @@ body {
     border-radius: 8px;
     text-align: center;
     display: block;
+}
+
+h1{
+    color: #FFFFFF;
+}
+
+h2 {
+    color: #ffffff;
 }
 
 

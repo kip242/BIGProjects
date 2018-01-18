@@ -21,9 +21,9 @@ try {
 </head>
 <body>
 <br>
-<h1>B.I.G. Project Dashboard</h1>
+<h1>B.I.G. Project Dashboard</</h1>
 <div>
-    <form action="adminLogin">
+    <form action="adminLogin.php">
     <button class="adminButton">Admin Login</button>
     </form>
 </div>
