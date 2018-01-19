@@ -56,23 +56,25 @@ if (!isset($mDate)) {$mDate = "";}
     <br>
     <div id="fields">
         <h4>Project Due Date:</h4>
+
         <span><input type="date" id="beinput" name="dDate"
-           value="<?php echo htmlspecialchars($dDate); ?>"></span>
+           value="<?php echo htmlspecialchars($dDate); ?>" placeholder="yyyy-mm-dd"></span>
     </div>
     <br>
     <br>
 
     <h4>Milestone Dates:</h4>
-    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
-    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
-    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
-    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
-    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
-    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
-    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
-    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
-    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
-    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>">
+
+    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>" placeholder="yyyy-mm-dd">
+    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>" placeholder="yyyy-mm-dd">
+    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>" placeholder="yyyy-mm-dd">
+    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>" placeholder="yyyy-mm-dd">
+    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>" placeholder="yyyy-mm-dd">
+    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>" placeholder="yyyy-mm-dd">
+    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>" placeholder="yyyy-mm-dd">
+    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>" placeholder="yyyy-mm-dd">
+    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>" placeholder="yyyy-mm-dd">
+    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>" placeholder="yyyy-mm-dd">
     <br>
     <br>
 
