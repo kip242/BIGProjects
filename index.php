@@ -1,88 +1,85 @@
 <?php
-if (!isset($pId)){
-    $pId = "";
-}
-if (!isset($pName)) {
-    $pName = "";
-}
-if (!isset($pDesc)) {
-    $pDesc = "";
-}
-if (!isset($dDate)) {
-    $dDate = "";
-}
-if (!isset($mDate)) {$mDate = "";}
 
+include('connect.php');
+try {
+    //SQL SELECT statement
+    $result = $conn->prepare("SELECT pId, pName, pDesc, dDate FROM projecttable");
+    $result->execute();
+    // assign returned array elements to variables
+    $rows = $result->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+}
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>B.I.G. Project Entry</title>
-    <link rel="stylesheet" type="text/css" href="form.css">
-    <script>
-        function charCount(field, count, max){
-            count.value = max - field.value.length;
-        }
-    </script>
+    <meta charset="ISO-8859-1">
+    <title>B.I.G Projects</title>
+    <link rel="stylesheet" type="text/css" href="FEform.css">
 </head>
 <body>
-<h1>B.I.G. Project Entry Information</h1>
-<form action="insert.php" method="GET">
-    <div id="fields">
-    <h4>Project Number:</h4>
-    <span><input type="text" id="beinput" name="pId"
-                        value="<?php echo htmlspecialchars($pId); ?>"></span>
-    </div>
-    <br>
-    <br>
-    <div id="fields">
-        <h4>Project Owner:</h4>
-        <span><input type="text" id="beinput" name="pName"
-           value="<?php echo htmlspecialchars($pName); ?>"></span>
-    </div>
-    <br>
-    <br>
-    <div id="fields">
-        <h4>Project Description:</h4>
-            <span><textarea name="pDesc" id="beinput" maxlength="1000" rows="12" cols="100"
-                            onKeydown="charCount(this, 1000);"
-                            onKeyup="charCount(this, left, 1000);"
-                            ><?php echo htmlspecialchars($pDesc); ?></textarea>
-                            <input id="textCounter" readonly type="text" name="left" size=2 maxlength=4
-                                   value="1000">characters left.</span>
-    </div>
-    <br>
-    <br>
-    <div id="fields">
-        <h4>Project Due Date:</h4>
-
-        <span><input type="date" id="beinput" name="dDate"
-           value="<?php echo htmlspecialchars($dDate); ?>" placeholder="yyyy-mm-dd"></span>
-    </div>
-    <br>
-    <br>
-
-    <h4>Milestone Dates:</h4>
-
-    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>" placeholder="yyyy-mm-dd">
-    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>" placeholder="yyyy-mm-dd">
-    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>" placeholder="yyyy-mm-dd">
-    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>" placeholder="yyyy-mm-dd">
-    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>" placeholder="yyyy-mm-dd">
-    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>" placeholder="yyyy-mm-dd">
-    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>" placeholder="yyyy-mm-dd">
-    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>" placeholder="yyyy-mm-dd">
-    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>" placeholder="yyyy-mm-dd">
-    <input type="date" id="beinput" name="mDate[]" value="<?php echo htmlspecialchars($mDate);?>" placeholder="yyyy-mm-dd">
-    <br>
-    <br>
-
-    <input class="buttonIndex" type="submit" value="Submit Project">
-</form>
 <br>
-<form action="BEdisplay.php" method="GET">
-    <input class="buttonIndex" type="submit" name="submit" value="Go to Project List">
-</form>
+<h1>B.I.G. Project Dashboard</</h1>
+<div>
+    <form action="adminLogin.php">
+    <button class="adminButton">Admin Login</button>
+    </form>
+</div>
+<?php
+
+//get today's date
+$today = date('Y-m-d');
+$todayd = date('F d Y');
+?>
+
+<h2>Hello today is <?php echo $todayd ?></h2>
+
+
+<?php
+
+foreach ($rows as $row) {
+    $pId = $row['pId'];
+    $pName = $row['pName'];
+    $pDesc = $row['pDesc'];
+    $dDate = $row['dDate'];
+
+    //get milestone dates from datetable for each project based on pId
+    $result2 = $conn->prepare("SELECT mDate FROM datetable WHERE pId = '$pId' LIMIT 1");
+    $result2->execute();
+    $rows2 = $result2->fetch(PDO::FETCH_ASSOC);
+    $date = $rows2['mDate'];
+
+    if (($dDate > $today) && ($date >= $today)) {
+        ?>
+        <div class="project-container">
+            <label>Project Number:</label>
+            <span><?php echo $pId; ?></span><br>
+            <label>Project Owner:</label>
+            <span><?php echo $pName; ?></span><br>
+            <label>Project Description:</label>
+            <span><?php echo $pDesc; ?> </span><br>
+            <label>Project Due Date:</label>
+            <span><?php echo $dDate; ?> </span><br>
+        </div>
+        <br>
+
+    <?php } else { ?>
+        <div class="FEproject-container-behind">
+            <label>Project Number:</label>
+            <span><?php echo $pId; ?></span><br>
+            <label>Project Owner:</label>
+            <span><?php echo $pName; ?></span><br>
+            <label>Project Description:</label>
+            <span><?php echo $pDesc; ?> </span><br>
+            <label>Project Due Date:</label>
+            <span><?php echo $dDate; ?> </span><br><br>
+            <h1>Project behind schedule!</h1>
+        </div>
+        <br>
+
+    <?php }
+} ?>
 </body>
 </html>
