@@ -34,7 +34,9 @@ switch ($action) {
         <!DOCTYPE html>
         <html>
         <head>
+            <meta charset="ISO-8859-1">
             <title>Update Form</title>
+            <link rel="stylesheet" type="text/css" href="form.css">
         </head>
         <body>
         <h1>Update Project # <?php echo $pId ?></h1>

@@ -74,12 +74,11 @@ if(isset($_GET['milestone'])) {
     <meta charset="ISO-8859-1">
     <title>Back End Insert</title>
     <link rel="stylesheet" type="text/css" href="form.css">
-
 </head>
 <body>
 <br>
 <h1>Project Dashboard</h1>
-<form action="index.php">
+<form action="newProject.php">
     <button class="buttonIndex" type="submit" name="add">Add Project</button><br><br>
 </form>
 <?php
