@@ -7,8 +7,8 @@
  */
 
 $servername = "compassbimysqlsvr.mysql.database.azure.com";
-$username = "kiplogin@compassbimysqlsvr";
-$password = "Sku11crush3r";
+$username = "kipsvr";
+$password = "";
 
 //connect to database
 $conn = new PDO("mysql:host=$servername;dbname=compassbiprojecttracer", $username, $password);
