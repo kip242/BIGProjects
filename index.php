@@ -1,6 +1,6 @@
 <?php
 
-/*include('connect.php');
+include('connect.php');
 try {
     //SQL SELECT statement
     $result = $conn->prepare("SELECT pId, pName, pDesc, dDate FROM projecttable");
@@ -9,7 +9,7 @@ try {
     $rows = $result->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
-}*/
+}
 ?>
 
 <!DOCTYPE html>
