@@ -7,8 +7,6 @@
  */
 include('connect.php');
 try {
-    //$pId2 = filter_input(INPUT_GET, 'pId');
-
     //SQL SELECT statement
     $result = $conn->prepare("SELECT * FROM projecttable");
     $result->execute();
@@ -136,9 +134,10 @@ foreach ($rows as $row) {
                     $pId = $row2['pId'];
                     $dateId = $row2['dateId'];
                     $mDate = $row2['mDate'];
+
                     ?>
 
-                    <input type="hidden" name="pId" value="<?php echo $pId; ?>"
+                    <input type="hidden" name="pId" value="<?php echo $pId; ?>">
                     <input type="hidden" name="mDate[]" value="<?php echo $mDate; ?>">
                     <br><input type="checkbox" name="mDate[]" value="<?php echo $count ?>"><?php echo $mDate; ?>
                     <input type="hidden" name="dateId[]" value="<?php echo $dateId?>">

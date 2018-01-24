@@ -132,10 +132,18 @@ body {
 }
 
 #beinput{
-    display: inline;
+
     border: solid;
     border-color: gainsboro;
     border-radius: 8px;
+}
+
+#beinputmDesc{
+    border: solid;
+    border-color: gainsboro;
+    border-radius: 8px;
+    width: 575px;
+    height: 20px;
 }
 
 #fields{
