@@ -9,16 +9,18 @@ body {
 }
 
 .milestone-container{
+    height: 400px;
     background: #ffffff;
     border: solid;
     border-radius: 5px;
     padding: 5px;
     width: 30%;
     float: right;
-    height: 350px;
+    overflow-y: auto;
 }
 
 .project-container {
+    height: 400px;
 	background: #ffffff;
 	border: solid;
 	border-radius: 5px;
@@ -26,7 +28,7 @@ body {
     width: 65%;
     float: left;
     margin-bottom: 10px;
-    height: 350px;
+    overflow-y: auto;
 }
 
 .boldLabel{
@@ -132,10 +134,18 @@ body {
 }
 
 #beinput{
-    display: inline;
+
     border: solid;
     border-color: gainsboro;
     border-radius: 8px;
+}
+
+#beinputmDesc{
+    border: solid;
+    border-color: gainsboro;
+    border-radius: 8px;
+    width: 575px;
+    height: 20px;
 }
 
 #fields{
@@ -153,6 +163,10 @@ body {
 
 #fields > span {
     display: inline-block;
+}
+
+.mDate {
+    font-weight: bold;
 }
 
 #textCounter{
