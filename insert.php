@@ -16,9 +16,8 @@ $pDesc = nl2br($pDesc, false);
 $dDate = filter_input(INPUT_GET, 'dDate');
 
 $dates = $_GET['mDate'];
-
-//$mDesc = filter_input(INPUT_GET, 'mDesc');
-//$mDesc = nl2br($mDesc, false);
+$mDesc = $_GET['mDesc'];
+$count = 0;
 
 try {
 
@@ -46,18 +45,31 @@ try {
     //insert milestone dates into datetable based on pId
     foreach($dates as $mDate) {
 
-    $sql2= "INSERT INTO datetable 
-                  (pId, mDate)
-            VALUES 
-                  (:pId, :mDate)";
-    $stmt = $conn->prepare($sql2);
-    $stmt->bindParam(':pId', $pId);
-    $stmt->bindParam(':mDate', $mDate);
-
-    $stmt->execute();
-    $stmt->closeCursor();
+        $sql2= "INSERT INTO datetable 
+                  (pId, mDate, mDesc)
+                VALUES 
+                  (:pId, :mDate, :mDesc)";
+        $stmt = $conn->prepare($sql2);
+        $stmt->bindParam(':pId', $pId);
+        $stmt->bindParam(':mDate', $mDate);
+        $stmt->bindParam(':mDesc', $mDesc[$count]);
+        $stmt->execute();
+        $count++;
+        $stmt->closeCursor();
 
     }
+
+    /*foreach($mDescs as $mDesc) {
+        $sql3 = "INSERT INTO datetable 
+                  (pId, mDesc)
+            VALUES 
+                  (:pId, :mDesc)";
+        $stmt = $conn->prepare($sql3);
+        $stmt->bindParam(':pId', $pId);
+        $stmt->bindParam(':mDesc', $mDesc);
+        $stmt->execute();
+        $stmt->closeCursor();
+    }*/
     header("Location: BEdisplay.php");
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();

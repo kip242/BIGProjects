@@ -36,7 +36,6 @@ if(isset($_GET['milestone'])) {
 
         if (IsChecked('mDate', '1')) {
             $dateId = $aDates[0];
-            echo $dateId;
             $sql = "DELETE FROM datetable 
                     WHERE dateId  = :dateId";
             $stmt = $conn->prepare($sql);
@@ -86,6 +85,7 @@ foreach ($rows as $row) {
     $pDesc = $row['pDesc'];
     $dDate = $row['dDate'];
     ?>
+
     <div class="project-container">
         <label class="boldLabel">Project ID:</label>
         <span><?php echo $pId; ?></span><br>
@@ -118,9 +118,11 @@ foreach ($rows as $row) {
             </tr>
         </TABLE>
     </div>
+
+
     <div class="milestone-container">
         <form action="#" method="GET">
-            <label class="boldLabel">Project Milestone Dates:</label><br><br>
+            <label class="boldLabel">Project Milestone Dates:</label><br>
 
                 <?php
                 //select and display all milestone dates
@@ -134,20 +136,27 @@ foreach ($rows as $row) {
                     $pId = $row2['pId'];
                     $dateId = $row2['dateId'];
                     $mDate = $row2['mDate'];
+                    $mDesc = $row2['mDesc'];
 
                     ?>
-
+                    <table>
+                        <tr>
                     <input type="hidden" name="pId" value="<?php echo $pId; ?>">
-                    <input type="hidden" name="mDate[]" value="<?php echo $mDate; ?>">
-                    <br><input type="checkbox" name="mDate[]" value="<?php echo $count ?>"><?php echo $mDate; ?>
-                    <input type="hidden" name="dateId[]" value="<?php echo $dateId?>">
-
+                    <input  type="hidden" name="mDate[]" value="<?php echo $mDate; ?>">
+                    <td><input type="checkbox" name="mDate[]" value="<?php echo $count; ?>"><?php echo "<strong>$mDate</strong>" ;?></td>
+                        </tr>
+                        <tr>
+                    <td><?php echo $mDesc; ?></td>
+                    <input type="hidden" name="dateId[]" value="<?php echo $dateId; ?>">
+                        </tr>
+                    </table>
                 <?php } ?>
                 <br><br>
                 <button type="submit" class="buttonDelete" name="milestone">Delete</button>
         </form>
     </div>
 <?php } ?>
+
 </body>
 </html>
 
