@@ -6,12 +6,18 @@
  * Time: 12:46 PM
  */
 
-$servername = "compassbimysqlsvr.mysql.database.azure.com";
-$username = "kiplogin@compassbimysqlsvr";
-$password = "Sku11crush3r";
+
+//$servername = "compassbimysqlsvr.mysql.database.azure.com";
+//$username = "kiplogin@compassbimysqlsvr";
+//$password = "Sku11crush3r";
+
+$servername = getenv('REMOTE_ADDR');
+$username = getenv('USERNAME');
+$password = getenv('PASSWORD');
+
 
 //connect to database
-$conn = new PDO("mysql:host=$servername;dbname=compassbiprojecttracer", $username, $password);
+$conn = new PDO("mysmpassbiprojecttracer", $username, $password);
 // set the PDO error mode to exception
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ?>
