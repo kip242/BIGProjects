@@ -6,7 +6,6 @@
  * Time: 12:46 PM
  */
 
-
 $servername = "compassbimysqlsvr.mysql.database.azure.com";
 $username = "kiplogin@compassbimysqlsvr";
 $password = "Sku11crush3r";
