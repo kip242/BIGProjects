@@ -7,13 +7,13 @@
  */
 
 
-//$servername = "compassbimysqlsvr.mysql.database.azure.com";
-//$username = "kiplogin@compassbimysqlsvr";
-//$password = "Sku11crush3r";
+$servername = "compassbimysqlsvr.mysql.database.azure.com";
+$username = "kiplogin@compassbimysqlsvr";
+$password = "Sku11crush3r";
 
-$servername = getenv('REMOTE_ADDR');
-$username = getenv('UNAME');
-$password = getenv('PASSWORD');
+//$servername = getenv('REMOTE_ADDR');
+//$username = getenv('UNAME');
+//$password = getenv('PASSWORD');
 
 
 //connect to database
