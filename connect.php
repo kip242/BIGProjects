@@ -12,7 +12,7 @@
 //$password = "Sku11crush3r";
 
 $servername = getenv('REMOTE_ADDR');
-$username = getenv('USERNAME');
+$username = getenv('UNAME');
 $password = getenv('PASSWORD');
 
 
