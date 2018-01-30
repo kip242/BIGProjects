@@ -6,9 +6,13 @@
  * Time: 2:15 PM
  */
 
-$servername = "compassbimysqlsvr.mysql.database.azure.com";
-$username = "kiplogin@compassbimysqlsvr";
-$password = "Sku11crush3r";
+//$servername = "compassbimysqlsvr.mysql.database.azure.com";
+//$username = "kiplogin@compassbimysqlsvr";
+//$password = "Sku11crush3r";
+
+$servername = getenv('REMOTE_ADDR');
+$username = getenv('USERNAME');
+$password = getenv('PASSWORD');
 
 //connect to database
 $conn = new PDO("mysql:host=$servername;dbname=compassbiprojecttracer", $username, $password);
