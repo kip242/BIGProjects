@@ -9,10 +9,13 @@
 include('connect.php');
 
 $pId = $_GET['pId'];
+$cDiv = $_GET['div'];
+
 $pName = $_GET['pName'];
 $pDesc = $_GET['pDesc'];
 $dDate = $_GET['dDate'];
 $mDate = $_GET['mDate'];
+
 
 $sql = "UPDATE projecttable
         SET pName = :pName,

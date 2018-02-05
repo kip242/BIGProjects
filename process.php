@@ -12,6 +12,9 @@ $pId = filter_input(INPUT_GET, 'pId');
 $pName = filter_input(INPUT_GET, 'pName');
 $pDesc = filter_input(INPUT_GET, 'pDesc');
 $dDate = filter_input(INPUT_GET, 'dDate');
+$div = filter_input(INPUT_GET, 'fdiv');
+
+
 
 $action = filter_input(INPUT_GET, 'action');
 
@@ -51,20 +54,37 @@ switch ($action) {
         <form action="updateSQL.php" method="GET">
             <input type="hidden" name="pId" value="<?php echo $pId; ?>">
             <label>Project Owner:</label>
-            <input type="text" name="pName"
+            <input id="beinput" type="text" name="pName"
                    value="<?php echo htmlspecialchars($pName); ?>">
             <br>
             <br>
+            <!--<label>Current Division:</label>
+            <input id="beinput" type="text" name="div"
+                   value="<?php echo htmlspecialchars($div); ?>">-->
+
+            <label>Updated Division:</label>
+            <?php echo $div ?>
+            <select name="divSelect">
+                <?php if($div == "Business Intelligence"){ ?>
+                <option value="Business Intelligence" selected>Business Intelligence</option>
+                <?php}elseif($div == "Information Technology"){?>
+                <option value="Information Technology" selected>Information Technology</option>
+                <?php}elseif($div == "Information Technology Hardware"){?>
+                <option value="Information Technology Hardware">Information Technology Hardware</option>
+                <?php } ?>
+            </select>
+            <br>
+            <br>
             <label>Project Description:</label>
-            <textarea name="pDesc" maxlength="1000" rows="4" cols="50"><?php echo htmlspecialchars($pDesc) ?></textarea>
+            <textarea id="beinput" name="pDesc" maxlength="1000" rows="4" cols="50"><?php echo htmlspecialchars($pDesc) ?></textarea>
             <br>
             <br>
             <label>Project Due Date:</label>
-            <input type="date" name="dDate"
+            <input id="beinput" type="date" name="dDate"
                    value="<?php echo htmlspecialchars($dDate) ?>">
             <br>
             <br>
-            <input type="submit" value="Submit Update">
+            <input class="buttonUpdate" type="submit" value="Submit Update">
             <br>
             <br>
         </form>

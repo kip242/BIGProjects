@@ -91,7 +91,7 @@ foreach ($rows as $row) {
     $dDate = $row['dDate'];
     $div = $row['cdiv'];
 
-    if($div === 'bi'){$fdiv = "Business Intellegence";}
+    if($div === 'bi'){$fdiv = "Business Intelligence";}
     if($div === 'it'){$fdiv = "Information Technology";}
     if($div === 'ith'){$fdiv = "Information Technology Hardware";}
     ?>
@@ -123,6 +123,7 @@ foreach ($rows as $row) {
                         <input type="hidden" name="pName" value="<?php echo $pName; ?>">
                         <input type="hidden" name="pDesc" value="<?php echo $pDesc; ?>">
                         <input type="hidden" name="dDate" value="<?php echo $dDate; ?>">
+                        <input type="hidden" name="fdiv" value="<?php echo $fdiv; ?>">
                         <input type="hidden" name="action" value="update">
                         <input class="buttonUpdate" type="submit" value="Update">
                     </form>
