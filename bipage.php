@@ -1,9 +1,15 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: v-datatu
+ * Date: 2/5/2018
+ * Time: 11:49 AM
+ */
 
 include('connect.php');
 try {
     //SQL SELECT statement
-    $result = $conn->prepare("SELECT pId, cdiv, pName, pDesc, dDate FROM projecttable");
+    $result = $conn->prepare("SELECT pId, cdiv, pName, pDesc, dDate FROM projecttable WHERE cdiv = 'bi'");
     $result->execute();
     // assign returned array elements to variables
     $rows = $result->fetchAll(PDO::FETCH_ASSOC);
@@ -16,21 +22,21 @@ try {
 <html>
 <head>
     <meta charset="ISO-8859-1">
-    <title>B.I.G Projects</title>
+    <title>Business Intelligence Projects</title>
     <link rel="stylesheet" type="text/css" href="FEform.css">
 </head>
 <body>
 <br>
-<h1>B.I.G. Project Dashboard</h1>
-
-<button class="link" onclick="location.href='bipage.php'">Business Intelligence</button>
+<h1>Business Intelligence Projects</h1>
+<button class="link" onclick="location.href='index.php'">Home</button>
 <button class="link" onclick="location.href='itpage.php'">Information Technology</button>
 <button class="link" onclick="location.href='ithpage.php'">IT Hardware</button>
 <div>
     <form action="adminLogin.php">
-    <button class="adminButton">Admin Login</button>
+        <button class="adminButton">Admin Login</button>
     </form>
 </div>
+
 <?php
 
 //get today's date
@@ -41,7 +47,6 @@ $todayd = date('F d Y');
 
 <h2>Hello today is <?php echo $todayd ?></h2>
 <?php
-
 foreach ($rows as $row) {
     $pId = $row['pId'];
     $cdiv =$row['cdiv'];
@@ -54,7 +59,6 @@ foreach ($rows as $row) {
     $result2->execute();
     $rows2 = $result2->fetch(PDO::FETCH_ASSOC);
     $date = $rows2['mDate'];
-
     if (($dDate > $today) && ($date >= $today)) {
         ?>
         <div id="Home">
@@ -88,16 +92,7 @@ foreach ($rows as $row) {
         </div>
         <br>
         </div>
-
-
-
-
-
-
-
     <?php }
 } ?>
-
-
 </body>
 </html>

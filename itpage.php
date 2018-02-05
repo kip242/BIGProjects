@@ -1,12 +1,19 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: v-datatu
+ * Date: 2/5/2018
+ * Time: 11:57 AM
+ */
 
 include('connect.php');
 try {
     //SQL SELECT statement
-    $result = $conn->prepare("SELECT pId, cdiv, pName, pDesc, dDate FROM projecttable");
+    $result = $conn->prepare("SELECT pId, cdiv, pName, pDesc, dDate FROM projecttable WHERE cdiv = 'it'");
     $result->execute();
     // assign returned array elements to variables
     $rows = $result->fetchAll(PDO::FETCH_ASSOC);
+    $rcount = $result->rowCount();
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
@@ -16,21 +23,21 @@ try {
 <html>
 <head>
     <meta charset="ISO-8859-1">
-    <title>B.I.G Projects</title>
+    <title>Information Technology Projects</title>
     <link rel="stylesheet" type="text/css" href="FEform.css">
 </head>
 <body>
 <br>
-<h1>B.I.G. Project Dashboard</h1>
-
+<h1>Information Technology Projects</h1>
+<button class="link" onclick="location.href='index.php'">Home</button>
 <button class="link" onclick="location.href='bipage.php'">Business Intelligence</button>
-<button class="link" onclick="location.href='itpage.php'">Information Technology</button>
 <button class="link" onclick="location.href='ithpage.php'">IT Hardware</button>
 <div>
     <form action="adminLogin.php">
-    <button class="adminButton">Admin Login</button>
+        <button class="adminButton">Admin Login</button>
     </form>
 </div>
+
 <?php
 
 //get today's date
@@ -40,8 +47,13 @@ $todayd = date('F d Y');
 ?>
 
 <h2>Hello today is <?php echo $todayd ?></h2>
+
+
 <?php
 
+if($rcount == 0){
+    echo "There are currently no projects on tap for Information Technology Hardware!";
+    }
 foreach ($rows as $row) {
     $pId = $row['pId'];
     $cdiv =$row['cdiv'];
@@ -88,16 +100,7 @@ foreach ($rows as $row) {
         </div>
         <br>
         </div>
-
-
-
-
-
-
-
     <?php }
 } ?>
-
-
 </body>
 </html>
