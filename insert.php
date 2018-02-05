@@ -14,6 +14,8 @@ $pName = filter_input(INPUT_GET, 'pName');
 $pDesc = filter_input(INPUT_GET, 'pDesc');
 $pDesc = nl2br($pDesc, false);
 $dDate = filter_input(INPUT_GET, 'dDate');
+$cdiv = filter_input(INPUT_GET, 'divSelect');
+
 
 $dates = $_GET['mDate'];
 $mDesc = $_GET['mDesc'];
@@ -23,14 +25,15 @@ try {
 
     //insert data into database
     $sql = "INSERT INTO projecttable 
-                  (pId, pName, pDesc, dDate)
+                  (pId, cdiv, pName, pDesc, dDate)
             VALUES 
-                  (:pId, :pName, :pDesc, :dDate)";
+                  (:pId, :cdiv, :pName, :pDesc, :dDate)";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':pId', $pId);
     $stmt->bindParam(':pName', $pName);
     $stmt->bindParam(':pDesc', $pDesc);
     $stmt->bindParam(':dDate', $dDate);
+    $stmt->bindParam(':cdiv', $cdiv);
     $stmt->execute();
 
 
@@ -58,18 +61,6 @@ try {
         $stmt->closeCursor();
 
     }
-
-    /*foreach($mDescs as $mDesc) {
-        $sql3 = "INSERT INTO datetable 
-                  (pId, mDesc)
-            VALUES 
-                  (:pId, :mDesc)";
-        $stmt = $conn->prepare($sql3);
-        $stmt->bindParam(':pId', $pId);
-        $stmt->bindParam(':mDesc', $mDesc);
-        $stmt->execute();
-        $stmt->closeCursor();
-    }*/
     header("Location: BEdisplay.php");
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();

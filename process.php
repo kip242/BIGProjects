@@ -17,6 +17,14 @@ $action = filter_input(INPUT_GET, 'action');
 
 switch ($action) {
 
+    case 'add' :
+        header("Location: newProject.php");
+        break;
+
+    case 'home' :
+        header("Location: index.php");
+        break;
+
     case 'delete' :
         echo $pId;
         $sql = "DELETE FROM projecttable 

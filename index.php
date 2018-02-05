@@ -31,6 +31,7 @@ try {
 
 //get today's date
 $today = date('Y-m-d');
+//format today's date
 $todayd = date('F d Y');
 ?>
 

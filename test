@@ -166,3 +166,11 @@ switch ($action){
      print_r($dateId) . "<br>";
      echo $mDate ;
      }
+
+     .container {
+         <!--padding:0.01em 16px;-->
+     }
+
+     .sticky + .content {
+         padding-top: 102px;
+     }

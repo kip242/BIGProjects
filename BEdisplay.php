@@ -69,26 +69,38 @@ if(isset($_GET['milestone'])) {
 <html>
 <head>
     <meta charset="ISO-8859-1">
-    <title>Back End Insert</title>
+    <title>List of Current Projects</title>
     <link rel="stylesheet" type="text/css" href="form.css">
 </head>
 <body>
-<br>
+<div class="top-menu" id="myHeader">
 <h1>Project Dashboard</h1>
-<form action="newProject.php">
-    <button class="buttonIndex" type="submit" name="add">Add Project</button><br><br>
+<form action="process.php" method="GET">
+    <button class="buttonIndex" type="submit" name="action" value="add">Add Project</button>
+    <button class="buttonHome" type="submit" name="action" value="home">Home</button><br><br>
 </form>
+</div>
+
+
 <?php
+$fdiv = "";
 foreach ($rows as $row) {
     $pId = $row['pId'];
     $pName = $row['pName'];
     $pDesc = $row['pDesc'];
     $dDate = $row['dDate'];
+    $div = $row['cdiv'];
+
+    if($div === 'bi'){$fdiv = "Business Intellegence";}
+    if($div === 'it'){$fdiv = "Information Technology";}
+    if($div === 'ith'){$fdiv = "Information Technology Hardware";}
     ?>
 
     <div class="project-container">
         <label class="boldLabel">Project ID:</label>
         <span><?php echo $pId; ?></span><br>
+        <label class="boldLabel">Division:</label>
+        <span><?php echo $fdiv; ?></span><br>
         <label class="boldLabel">Project Owner:</label>
         <span><?php echo $pName; ?></span><br>
         <label class="boldLabel">Project Description:</label>
@@ -156,7 +168,20 @@ foreach ($rows as $row) {
         </form>
     </div>
 <?php } ?>
+<script>
+    window.onscroll = function() {myFunction()};
 
+    var header = document.getElementById("myHeader");
+    var sticky = header.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset >= sticky) {
+            header.classList.add("sticky");
+        } else {
+            header.classList.remove("sticky");
+        }
+    }
+</script>
 </body>
 </html>
 

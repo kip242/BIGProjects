@@ -1,11 +1,13 @@
 @charset "ISO-8859-1";
 body {
-  background: #4cbb17;
-  box-sizing: border-box;
+    background: #4cbb17;
+    margin: 0;
 }
 
-.container {
-    padding:0.01em 16px;
+.top-menu {
+    background: #4cbb17;
+    padding: 10px 16px;
+    width: 100%;
 }
 
 .milestone-container{
@@ -14,6 +16,7 @@ body {
     border: solid;
     border-radius: 5px;
     padding: 5px;
+
     width: 30%;
     float: right;
     overflow-y: auto;
@@ -25,6 +28,7 @@ body {
 	border: solid;
 	border-radius: 5px;
 	padding: 5px;
+
     width: 65%;
     float: left;
     margin-bottom: 10px;
@@ -46,6 +50,21 @@ body {
     text-align: center;
     text-decoration: none;
     display: inline-block;
+    font-size: 12px;
+    border-radius: 8px;
+}
+
+.buttonHome {
+    background-color: #444444;
+    border-right-color: darkgrey;
+    -moz-border-right-colors: darkgrey;
+    border-bottom-color: darkgrey;
+    -moz-border-bottom-colors: darkgrey;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+
     font-size: 12px;
     border-radius: 8px;
 }
@@ -128,6 +147,8 @@ body {
     margin-right: 60px;
 }
 
+
+
 #label{
     font-weight: bold;
     margin-right: 30px;
@@ -178,6 +199,12 @@ body {
 
 h4{
     margin-bottom:4px;
+}
+
+select{
+    border: solid;
+    border-color: gainsboro;
+    border-radius: 8px;
 }
 
 
