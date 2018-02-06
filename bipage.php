@@ -13,6 +13,7 @@ try {
     $result->execute();
     // assign returned array elements to variables
     $rows = $result->fetchAll(PDO::FETCH_ASSOC);
+    $rcount = $result->rowCount();
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
