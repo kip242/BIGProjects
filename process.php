@@ -12,7 +12,7 @@ $pId = filter_input(INPUT_GET, 'pId');
 $pName = filter_input(INPUT_GET, 'pName');
 $pDesc = filter_input(INPUT_GET, 'pDesc');
 $dDate = filter_input(INPUT_GET, 'dDate');
-$div = filter_input(INPUT_GET, 'fdiv');
+$cdiv = filter_input(INPUT_GET, 'cdiv');
 
 
 
@@ -58,20 +58,12 @@ switch ($action) {
                    value="<?php echo htmlspecialchars($pName); ?>">
             <br>
             <br>
-            <!--<label>Current Division:</label>
-            <input id="beinput" type="text" name="div"
-                   value="<?php echo htmlspecialchars($div); ?>">-->
-
-            <label>Updated Division:</label>
-            <?php echo $div ?>
+            <label>Division:</label>
+            <!--This select box selected value is set when $cdiv from BEdisplay = hardcoded value-->
             <select name="divSelect">
-                <?php if($div == "Business Intelligence"){ ?>
-                <option value="Business Intelligence" selected>Business Intelligence</option>
-                <?php}elseif($div == "Information Technology"){?>
-                <option value="Information Technology" selected>Information Technology</option>
-                <?php}elseif($div == "Information Technology Hardware"){?>
-                <option value="Information Technology Hardware">Information Technology Hardware</option>
-                <?php } ?>
+                <option value="Business Intelligence" <?php echo (($cdiv==="Business Intelligence")?"selected":"") ?>>Business Intelligence</option>
+                <option value="Information Technology" <?php echo (($cdiv==="Information Technology")?"selected":"") ?>>Information Technology</option>
+                <option value="Information Technology Hardware" <?php echo (($cdiv==="Information Technology Hardware")?"selected":"") ?>>Information Technology Hardware</option>
             </select>
             <br>
             <br>

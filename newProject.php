@@ -32,9 +32,9 @@ if (!isset($mDesc)) {$mDesc = "";}
     <div id="fields">
         <h4>Which Division is this a project for?</h4>
         <select name="divSelect">
-            <option value="bi">Business Intelligence</option>
-            <option value="it">Information Technology</option>
-            <option value="ith">Information Technology Hardware</option>
+            <option value="Business Intelligence">Business Intelligence</option>
+            <option value="Information Technology">Information Technology</option>
+            <option value="Information Technology Hardware">Information Technology Hardware</option>
         </select>
 
         <h4>Project Owner:</h4>

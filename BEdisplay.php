@@ -83,24 +83,22 @@ if(isset($_GET['milestone'])) {
 
 
 <?php
-$fdiv = "";
+
 foreach ($rows as $row) {
     $pId = $row['pId'];
     $pName = $row['pName'];
     $pDesc = $row['pDesc'];
     $dDate = $row['dDate'];
-    $div = $row['cdiv'];
+    $cdiv = $row['cdiv'];
 
-    if($div === 'bi'){$fdiv = "Business Intelligence";}
-    if($div === 'it'){$fdiv = "Information Technology";}
-    if($div === 'ith'){$fdiv = "Information Technology Hardware";}
+
     ?>
 
     <div class="project-container">
         <label class="boldLabel">Project ID:</label>
         <span><?php echo $pId; ?></span><br>
         <label class="boldLabel">Division:</label>
-        <span><?php echo $fdiv; ?></span><br>
+        <span><?php echo $cdiv; ?></span><br>
         <label class="boldLabel">Project Owner:</label>
         <span><?php echo $pName; ?></span><br>
         <label class="boldLabel">Project Description:</label>
@@ -123,7 +121,7 @@ foreach ($rows as $row) {
                         <input type="hidden" name="pName" value="<?php echo $pName; ?>">
                         <input type="hidden" name="pDesc" value="<?php echo $pDesc; ?>">
                         <input type="hidden" name="dDate" value="<?php echo $dDate; ?>">
-                        <input type="hidden" name="fdiv" value="<?php echo $fdiv; ?>">
+                        <input type="hidden" name="cdiv" value="<?php echo $cdiv; ?>">
                         <input type="hidden" name="action" value="update">
                         <input class="buttonUpdate" type="submit" value="Update">
                     </form>
@@ -169,20 +167,6 @@ foreach ($rows as $row) {
         </form>
     </div>
 <?php } ?>
-<script>
-    window.onscroll = function() {myFunction()};
-
-    var header = document.getElementById("myHeader");
-    var sticky = header.offsetTop;
-
-    function myFunction() {
-        if (window.pageYOffset >= sticky) {
-            header.classList.add("sticky");
-        } else {
-            header.classList.remove("sticky");
-        }
-    }
-</script>
 </body>
 </html>
 

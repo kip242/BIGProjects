@@ -9,7 +9,7 @@
 include('connect.php');
 try {
     //SQL SELECT statement
-    $result = $conn->prepare("SELECT pId, cdiv, pName, pDesc, dDate FROM projecttable WHERE cdiv = 'ith'");
+    $result = $conn->prepare("SELECT pId, cdiv, pName, pDesc, dDate FROM projecttable WHERE cdiv = 'Information Technology Hardware'");
     $result->execute();
     // assign returned array elements to variables
     $rows = $result->fetchAll(PDO::FETCH_ASSOC);
@@ -62,11 +62,6 @@ foreach ($rows as $row) {
     $pDesc = $row['pDesc'];
     $dDate = $row['dDate'];
 
-    //format name of division from DB short to long readable
-    if($cdiv === 'bi'){$fdiv = "Business Intelligence";}
-    if($cdiv === 'it'){$fdiv = "Information Technology";}
-    if($cdiv === 'ith'){$fdiv = "Information Technology Hardware";}
-
     //get milestone dates from datetable for each project based on pId
     $result2 = $conn->prepare("SELECT mDate FROM datetable WHERE pId = '$pId' LIMIT 1");
     $result2->execute();
@@ -82,7 +77,7 @@ foreach ($rows as $row) {
             <label>Project Number:</label>
             <span><?php echo $pId; ?></span><br>
             <label>Division:</label>
-            <span><?php echo $fdiv; ?></span><br>
+            <span><?php echo $cdiv; ?></span><br>
             <label>Project Owner:</label>
             <span><?php echo $pName; ?></span><br>
             <label>Project Description:</label>
@@ -97,7 +92,7 @@ foreach ($rows as $row) {
             <label>Project Number:</label>
             <span><?php echo $pId; ?></span><br>
             <label>Division:</label>
-            <span><?php echo $fdiv; ?></span><br>
+            <span><?php echo $cdiv; ?></span><br>
             <label>Project Owner:</label>
             <span><?php echo $pName; ?></span><br>
             <label>Project Description:</label>

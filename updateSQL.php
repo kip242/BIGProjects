@@ -9,7 +9,7 @@
 include('connect.php');
 
 $pId = $_GET['pId'];
-$cDiv = $_GET['div'];
+$cdiv = filter_input(INPUT_GET, 'divSelect');
 
 $pName = $_GET['pName'];
 $pDesc = $_GET['pDesc'];
@@ -18,13 +18,15 @@ $mDate = $_GET['mDate'];
 
 
 $sql = "UPDATE projecttable
-        SET pName = :pName,
+        SET cdiv = :cdiv,
+            pName = :pName,
             pDesc = :pDesc,
             dDate = :dDate
         WHERE 
             pId = :pId";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':pId', $pId);
+$stmt->bindParam(':cdiv', $cdiv);
 $stmt->bindParam(':pName', $pName);
 $stmt->bindParam(':pDesc', $pDesc);
 $stmt->bindParam(':dDate', $dDate);
